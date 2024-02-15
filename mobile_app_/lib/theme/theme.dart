@@ -18,4 +18,10 @@ final whiteTheme = ThemeData(
         color: Color.fromRGBO(110, 110, 110, 0.478),
         fontSize: 20,
       )),
-);
+    // нижняя менюшка на main_page_screen
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedItemColor: Color.fromARGB(255, 129, 190, 240),
+      unselectedItemColor: Color.fromARGB(255, 110, 110, 110),
+    ),
+  );
+    

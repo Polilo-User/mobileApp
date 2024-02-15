@@ -4,8 +4,9 @@
 
 import 'package:flutter/material.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
 
-// import 'package:mobile_app_/modules/start_screen/widgets/widgets.dart';
+import 'package:mobile_app_/modules/start_screen/widgets/widgets.dart';
 
 class MainPageScreen extends StatefulWidget {
   const MainPageScreen({ Key? key, required this.BarTitle}) : super(key: key);
@@ -25,6 +26,9 @@ class _MainPageScreenState extends State<MainPageScreen> {
           widget.BarTitle
         )
       ),
+      body: Container(
+        child: const MainBottomNavigationBar(),
+      )
     );
   }
 }
