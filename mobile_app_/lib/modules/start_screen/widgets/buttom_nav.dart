@@ -1,9 +1,10 @@
 
 
 import 'package:flutter/material.dart';
-
-import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:mobile_app_/modules/start_screen/widgets/chat.dart';
+import 'package:mobile_app_/modules/start_screen/widgets/favorites.dart';
+import 'package:mobile_app_/modules/start_screen/widgets/list-builds.dart';
+import 'package:mobile_app_/modules/start_screen/widgets/news.dart';
 
 class MainBottomNavigationBar extends StatefulWidget {
   const MainBottomNavigationBar({super.key});
@@ -15,26 +16,12 @@ class MainBottomNavigationBar extends StatefulWidget {
 
 class _MainBottomNavigationBarState extends State<MainBottomNavigationBar> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-    TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   
   static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      '1. Здесь будет крутая недвижемость',
-      style: optionStyle,
-    ),
-    Text(
-      '2. Здесь будет чат',
-      style: optionStyle,
-    ),
-    Text(
-      '3. Здесь будут новости',
-      style: optionStyle,
-    ),
-    Text(
-      '4. Здесь будет избранное и еще что-то',
-      style: optionStyle,
-    ),
+    ListBuilds(),
+    Chat(),
+    News(),
+    Favorites(),
   ];
 
   void _onItemTapped(int index) {
