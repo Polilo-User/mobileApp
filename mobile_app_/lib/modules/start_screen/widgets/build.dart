@@ -15,46 +15,106 @@ class Build extends StatefulWidget {
 class _BuildState extends State<Build> {
   @override
   Widget build(BuildContext context) {
+    final thme = Theme.of(context);
     return ListTile(
-       title: Container( 
-        margin: const EdgeInsets.only(top: 15, left: 20), // настраиваем радиус скругления
-        child: ClipRRect(
-            borderRadius: BorderRadius.circular(15.0),
-            child: Image.network(
-            "https://media.istockphoto.com/id/511061090/ru/фото/бизнес-офис-здание-в-лондоне-англия.jpg?s=612x612&w=0&k=20&c=JXTyE-PEYmyuSPQzjflj2CMg3QSLT4VToAPtxdz7SKA=",
-            width: 250,
-            height: 200,
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
-      subtitle: Container(
-          margin: const EdgeInsets.only(top: 5, left: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[ 
-              const Text("Солнечные башни", style: TextStyle(fontSize: 20)), 
 
-              Container(
-                  child: Row(
-                  children: <Widget>[
-                    const Text(
-                      "От 6 млн", 
-                      style: TextStyle(fontSize: 15),
+      title: InkWell(
+        onTap: () {
+          print("Нажатие на карточку");
+        },
+        child: 
+        Container(
+          margin: EdgeInsets.only(left: 15),  
+          decoration: 
+            BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                  BoxShadow(
+                  color: const Color.fromARGB(255, 207, 207, 207).withOpacity(0.5), 
+                  spreadRadius: 2, 
+                  blurRadius: 3.5,
+                  offset: const Offset(0, 3),
+                )
+              ],
+              borderRadius: BorderRadius.circular(10), 
+            ),
+          child: 
+            Column(
+              children: [
+                ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(10), 
+                        topRight: Radius.circular(10), 
+                      ),
+                    // url изображения ЖК комплекса
+                      child: Stack(
+                        children: [ 
+                          Image.network(
+                            "https://s3-alpha-sig.figma.com/img/8fc0/ec5d/db97c0e977dd8bfdf277eafb07e29e15?Expires=1709510400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=g68IHVbZ~-PVR6MK7uNXkC4jn8gHVsssXNOpYfwGgJatbAe0-stss~itmPyzCMuY6MjZYxhMywPVlOFHbANZ7FP3Btl40o0SuWiawjXeGMlJNaSN5Z4Gp-acsXbJsg86ia8sYYW41gl48Nt5cb9FTCU4mTD7mnFNWbvFnDUOsk1OsiTEWXMhA7Y0nslGq-gepofTJ7J7YenTR9I1tMtLjQay-IoWMjH871hhWXES~ZAn2Bjjpj1mioUDw4Rw8zRT0I-iWauHDZglMvGVVgGdY9-vKuxz-AKbU98uVBljhRYDz8cWLph0PoSfc1H95td6zWhZW10HIxGU0MbhNTrcfg__",
+                            width: 460,
+                            height: 200,
+                            fit: BoxFit.cover,
+                          ),
+                          Positioned(
+                            top: 20,
+                            left: 10,
+                            right: 250,
+                            child: Container(
+                              width: 20,
+                              height: 30,
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 80, 80, 80).withOpacity(0.5), // Прозрачный зеленый фон
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  'IV кв. 2026',
+                                  style: TextStyle(fontSize: 13, color: Colors.white, fontFamily: "Montserrat"),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ] 
+                      )
                     ),
-                    SizedBox(width: 5), 
-                    SvgPicture.asset(
-                      'assets/svg/ruble-sign.svg',
-                      width: 14,
-                      height: 14,
-                      color: Colors.blue,
+                    Container(
+                      margin: const EdgeInsets.only(top: 20, left: 30),
+                      child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[ 
+                    // Район
+                      const Text("Сити-квартал Октябрьский", style: TextStyle(fontSize: 20)), 
+                      Container(
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              width: 25,
+                              height: 25,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(7),
+                                color: const Color.fromARGB(185, 149, 240, 113),
+                              ),
+                              child: const Text("₽", 
+                              style: TextStyle(fontSize: 18, color: Color.fromARGB(185, 70, 130, 47),),
+                              textAlign: TextAlign.center,),
+                            ),
+                            const SizedBox(width: 5), 
+                          // стоимость
+                            Text(
+                              "От 6 млн", 
+                              style: thme.textTheme.bodySmall,
+                            ),
+                          ],
+                      ),
                     ),
-                  ],
-                ),
-              )
-            ]
-          )
+                    const Text("")
+                  ]
+                )
+              ),
+            ],
+        )
       ),
-    );
-  }
+    )
+  );
+}
 }
