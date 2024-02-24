@@ -20,9 +20,8 @@ class _ListBuildsState extends State<ListBuilds> {
         children: [  
             Row(
               children: [
+
                   Container(
-                    width: 60,
-                    height: 60,
                     decoration: BoxDecoration(
                       color: const Color.fromRGBO(239, 255, 218, 1),
                       borderRadius: BorderRadius.circular(10),
@@ -33,8 +32,11 @@ class _ListBuildsState extends State<ListBuilds> {
                         end: BorderSide(color: Color.fromRGBO(118, 197, 19, 1)),
                       ),
                     ),
-                    margin: const EdgeInsets.only(left: 300, top: 25),
-                    child: IconButton(
+                    margin: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width * 0.8, // 10% ширины экрана слева и справа
+                      top: MediaQuery.of(context).size.height * 0.05, // 5% высоты экрана сверху и снизу
+                    ),
+                    child: Expanded( child: IconButton(
                       icon:  
                         SvgPicture.asset(
                            'assets/svg/build-filter.svg',
@@ -42,10 +44,11 @@ class _ListBuildsState extends State<ListBuilds> {
                             height: 20,
                         ),
                       onPressed: () {
-                        // Add your button's functionality here
+                        print("pushed filter buttom");
+                         Navigator.of(context).pushNamed('/rest-commun-filter', arguments: {});
                       },
                     )
-                  )
+                  ))
               ],
             ),
             Expanded(

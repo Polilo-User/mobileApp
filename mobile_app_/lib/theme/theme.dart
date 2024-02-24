@@ -19,12 +19,42 @@ final whiteTheme = ThemeData(
         fontSize: 14.25,
       ),
       bodyMedium: TextStyle(
-          fontFamily: "Roboto", fontSize: 20, fontWeight: FontWeight.w700),
+          fontFamily: "Montserrat", fontSize: 20, fontWeight: FontWeight.w700),
       labelSmall: TextStyle(
         color: Color.fromRGBO(110, 110, 110, 0.478),
         fontSize: 20,
+      ),
+      labelLarge: TextStyle(
+        fontFamily: "Montserrat", fontSize: 15
       )
     ),
+    
+    // кнопка
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(35, 79, 104, 1)),
+        textStyle: MaterialStateProperty.resolveWith((states) {
+            return const TextStyle(
+              color: Colors.white,
+              fontFamily: "Montserrat",
+              fontSize: 13,
+            );
+          }),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(13.0), // Настройка закругления кнопки
+            ),
+        ),
+      ),
+    ),
+
+    // слайдер
+    sliderTheme: const SliderThemeData(
+      // штука между круглыми штуками
+      activeTrackColor:  Color.fromRGBO(35, 79, 104, 1),
+      // круглая штука
+      thumbColor: Color.fromRGBO(35, 79, 104, 1),
+    ),    
     
 
     //нижняя менюшка на main_page_screen
