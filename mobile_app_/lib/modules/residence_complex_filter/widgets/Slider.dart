@@ -2,7 +2,7 @@
 
 
 
-
+import 'package:mobile_app_/repositories/filters/filter_repository.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -14,9 +14,8 @@ class MySlider extends StatefulWidget {
     required this.min, 
     required this.max, 
     required this.divisions, 
-    required this.values,
     required this.valueName,
-    required this.updateCoast
+    required this.filterRepository
   });
 
   String lable;
@@ -25,15 +24,15 @@ class MySlider extends StatefulWidget {
   double max;
   int divisions; 
   String valueName;
-  RangeValues values;
-
-  Function(RangeValues, String) updateCoast;
+  final FilterRepository filterRepository;
 
   @override
   State<MySlider> createState() => _MySliderState();
 }
 
 class _MySliderState extends State<MySlider> {
+
+  
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -50,15 +49,14 @@ class _MySliderState extends State<MySlider> {
           ),
           Container(
             child: RangeSlider(
-            values: widget.values,
+            values: widget.filterRepository.valueMap[widget.valueName] as RangeValues,  
             min: widget.min, // Минимальное значение диапазона
             max: widget.max,
             divisions: widget.divisions,
 
             onChanged: (RangeValues values) {
               setState(() {
-                widget.updateCoast(values, widget.valueName);
-                widget.values = values;
+                widget.filterRepository.valueMap[widget.valueName] = values;
               });
             }
             )

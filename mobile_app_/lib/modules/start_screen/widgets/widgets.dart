@@ -1,5 +1,4 @@
-export 'build.dart';
-export 'list-builds.dart';
-export 'news.dart';
-export 'chat.dart';
-export 'favorites.dart';
+
+export '../../news/view/view.dart';
+export '../../chat/view/view.dart';
+export '../../more/view/view.dart';

@@ -1,18 +1,18 @@
 
 
 
-import 'package:mobile_app_/modules/start_screen/widgets/build.dart';
+import 'package:mobile_app_/modules/residence_complex_list/widgets/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 
-class ListBuilds extends StatefulWidget {
-  const ListBuilds({ Key? key }) : super(key: key);
+class ResidenceComplexList extends StatefulWidget {
+  const ResidenceComplexList({ Key? key }) : super(key: key);
 
   @override
-  _ListBuildsState createState() => _ListBuildsState();
+  _ResidenceComplexListState createState() => _ResidenceComplexListState();
 }
 
-class _ListBuildsState extends State<ListBuilds> {
+class _ResidenceComplexListState extends State<ResidenceComplexList> {
   @override
   Widget build(BuildContext context) {
     return 
@@ -20,7 +20,6 @@ class _ListBuildsState extends State<ListBuilds> {
         children: [  
             Row(
               children: [
-
                   Container(
                     decoration: BoxDecoration(
                       color: const Color.fromRGBO(239, 255, 218, 1),
@@ -44,7 +43,7 @@ class _ListBuildsState extends State<ListBuilds> {
                             height: 20,
                         ),
                       onPressed: () {
-                        print("pushed filter buttom");
+                         print("pushed filter buttom");
                          Navigator.of(context).pushNamed('/rest-commun-filter', arguments: {});
                       },
                     )
@@ -54,6 +53,7 @@ class _ListBuildsState extends State<ListBuilds> {
             Expanded(
                   child: ListView.builder(
                     itemCount: 8,
+                    // этого элемент листа
                     itemBuilder: (context, i) {
                       return const Build();
                     })

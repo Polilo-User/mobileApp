@@ -3,8 +3,7 @@
 
 
 import 'package:flutter/material.dart';
-
-
+import 'package:mobile_app_/modules/residence_complex_list/residence_complex.dart';
 import 'package:mobile_app_/modules/start_screen/widgets/widgets.dart';
 
 // import 'package:flutter/material.dart';
@@ -13,9 +12,7 @@ import 'package:mobile_app_/modules/start_screen/widgets/widgets.dart';
 
 
 class MainPageScreen extends StatefulWidget {
-  const MainPageScreen({ Key? key, required this.BarTitle}) : super(key: key);
-
-  final String BarTitle;
+  const MainPageScreen({ Key? key}) : super(key: key);
 
   @override
   _MainPageScreenState createState() => _MainPageScreenState();
@@ -24,7 +21,7 @@ class MainPageScreen extends StatefulWidget {
 class _MainPageScreenState extends State<StatefulWidget> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
-    ListBuilds(),
+    ResidenceComplexList(),
     Chat(),
     News(),
     Favorites(),
