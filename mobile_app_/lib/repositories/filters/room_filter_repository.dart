@@ -11,14 +11,16 @@ class RoomFilterRepository extends FilterRepository {
   List<bool> rooms = [false, false, false, false, false, false];
   
   // Слайдеры
+  @override
   Map<String, RangeValues> valueMap = {
-    'coast':  RangeValues(6, 13),
-    'square': RangeValues(37, 93),
-    'floor':  RangeValues(2, 16),
+    'coast':  const RangeValues(6, 13),
+    'square': const RangeValues(37, 93),
+    'floor':  const RangeValues(2, 16),
   };
 
+  @override
   String GetValues() {
-    return "${rooms}, стоимость ${valueMap['coast'] as RangeValues}, площадь ${valueMap['square'] as RangeValues}, этаж ${valueMap['floor'] as RangeValues}";
+    return "$rooms, стоимость ${valueMap['coast'] as RangeValues}, площадь ${valueMap['square'] as RangeValues}, этаж ${valueMap['floor'] as RangeValues}";
   }
 
 }

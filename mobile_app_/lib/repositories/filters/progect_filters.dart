@@ -8,8 +8,9 @@ class ProjectFilterRepository extends FilterRepository {
 
   ProjectFilterRepository();
 
-   Map<String, RangeValues> valueMap = {
-    'coast':  RangeValues(6, 13),
+   @override
+  Map<String, RangeValues> valueMap = {
+    'coast':  const RangeValues(6, 13),
    };
 
   @override

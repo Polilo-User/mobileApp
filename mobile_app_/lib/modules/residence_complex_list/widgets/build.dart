@@ -48,7 +48,7 @@ class _BuildState extends State<Build> {
                       child: Stack(
                         children: [ 
                           Image.network(
-                            "https://s3-alpha-sig.figma.com/img/8fc0/ec5d/db97c0e977dd8bfdf277eafb07e29e15?Expires=1709510400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=g68IHVbZ~-PVR6MK7uNXkC4jn8gHVsssXNOpYfwGgJatbAe0-stss~itmPyzCMuY6MjZYxhMywPVlOFHbANZ7FP3Btl40o0SuWiawjXeGMlJNaSN5Z4Gp-acsXbJsg86ia8sYYW41gl48Nt5cb9FTCU4mTD7mnFNWbvFnDUOsk1OsiTEWXMhA7Y0nslGq-gepofTJ7J7YenTR9I1tMtLjQay-IoWMjH871hhWXES~ZAn2Bjjpj1mioUDw4Rw8zRT0I-iWauHDZglMvGVVgGdY9-vKuxz-AKbU98uVBljhRYDz8cWLph0PoSfc1H95td6zWhZW10HIxGU0MbhNTrcfg__",
+                            "https://i.pinimg.com/474x/de/a4/ff/dea4ffd5d90a388ccfed949ccdcbac5a.jpg",
                             width: MediaQuery.of(context).size.width * 1.0,
                             height: MediaQuery.of(context).size.width * 0.5,
                             fit: BoxFit.cover,

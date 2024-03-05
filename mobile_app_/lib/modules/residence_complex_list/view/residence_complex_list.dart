@@ -35,19 +35,19 @@ class _ResidenceComplexListState extends State<ResidenceComplexList> {
                       left: MediaQuery.of(context).size.width * 0.8, // 10% ширины экрана слева и справа
                       top: MediaQuery.of(context).size.height * 0.05, // 5% высоты экрана сверху и снизу
                     ),
-                    child: Expanded( child: IconButton(
-                      icon:  
-                        SvgPicture.asset(
-                           'assets/svg/build-filter.svg',
-                            width: 20,
-                            height: 20,
-                        ),
-                      onPressed: () {
-                         print("pushed filter buttom");
-                         Navigator.of(context).pushNamed('/rest-commun-filter', arguments: {});
-                      },
+                    child:
+                      IconButton(
+                        icon:
+                          SvgPicture.asset(
+                             'assets/svg/build-filter.svg',
+                              width: 20,
+                              height: 20,
+                          ),
+                        onPressed: () {
+                           Navigator.of(context).pushNamed('/rest-commun-filter', arguments: {});
+                        },
                     )
-                  ))
+                  )
               ],
             ),
             Expanded(

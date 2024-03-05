@@ -29,8 +29,8 @@ class _RoomAskState extends State<RoomAsk> {
     return Container(
             margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.02),
             width: MediaQuery.of(context).size.width * 0.1,
-            child:  Expanded( 
-              child:  TextButton(
+            child:
+              TextButton(
                 onPressed: () {
                   setState(() {
                     roomFilterRepository.rooms[widget.id] = !roomFilterRepository.rooms[widget.id];
@@ -45,9 +45,8 @@ class _RoomAskState extends State<RoomAsk> {
                   )
                 ),
                 // _switchValue ? 'true' : 'false'
-                child:  Text(widget.roomName, style: const TextStyle(color: Colors.white, fontSize: 14),) 
+                child:  Text(widget.roomName, style: const TextStyle(color: Colors.white, fontSize: 14),)
               )
-            )
           );
   }
 }
@@ -86,7 +85,7 @@ class _RoomAskStudState extends State<RoomAskStud> {
           )
         ),
         // _switchValue ? 'true' : 'false'
-        child: Text(widget.roomName, style: TextStyle(color: Colors.white),),
+        child: Text(widget.roomName, style: const TextStyle(color: Colors.white),),
       );
   }
 }

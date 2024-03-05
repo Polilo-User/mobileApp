@@ -81,7 +81,7 @@ class _RoomsFilterState extends State<RoomsFilter> {
          Container(
           child: ElevatedButton(
             onPressed: () {
-              print("${roomFilterRepository.GetValues()}");
+              print(roomFilterRepository.GetValues());
             },
             child: const Text('Найти помещения', style: TextStyle(color: Colors.white)), // Текст кнопки
           )

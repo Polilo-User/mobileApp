@@ -29,7 +29,7 @@ class _ProgectFilterState extends State<ProgectFilter> {
          Container(
           child: ElevatedButton(
             onPressed: () {
-              print("${roomFilterRepository.GetValues()}");
+              print(roomFilterRepository.GetValues());
             },
             child: const Text('Найти проекты', style: TextStyle(color: Colors.white)), // Текст кнопки
           )
