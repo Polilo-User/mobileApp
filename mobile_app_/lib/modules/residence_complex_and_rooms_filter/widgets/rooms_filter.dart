@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:mobile_app_/repositories/filters/room_filter_repository.dart';
-import 'package:mobile_app_/modules/residence_complex_filter/widgets/room_ask.dart';
-import 'package:mobile_app_/modules/residence_complex_filter/widgets/Slider.dart';
+import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/room_ask.dart';
+import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/Slider.dart';
 
 class RoomsFilter extends StatefulWidget {
   
@@ -32,7 +32,7 @@ class _RoomsFilterState extends State<RoomsFilter> {
 
       children: [
 
-        // Корпусов в MVP не будет 😎
+        // Корпусов в MVP не будет 😎 или будут ?
 
         // Количество комнат  
         Container(
@@ -41,24 +41,23 @@ class _RoomsFilterState extends State<RoomsFilter> {
         ),
         Row(
           children: [
-          // Студия ?
-          RoomAskStud(roomName: "Студия", id: 0),
+            // Студия ?
+            RoomAskStud(roomName: "Студия", id: 0),
 
-          // 1 ?
-          RoomAsk(roomName: "1", id: 1),
-          
-          // 2 ?
-          RoomAsk(roomName: "2", id: 2,),
-          
-          // 3 ?
-          RoomAsk(roomName: "3", id: 3),
-          
-          // 4 ?
-          RoomAsk(roomName: "4", id: 4),
-          
-          // 5 ?
-          RoomAsk(roomName: "5+", id: 5)
-      
+            // 1 ?
+            RoomAsk(roomName: "1", id: 1),
+
+            // 2 ?
+            RoomAsk(roomName: "2", id: 2,),
+
+            // 3 ?
+            RoomAsk(roomName: "3", id: 3),
+
+            // 4 ?
+            RoomAsk(roomName: "4", id: 4),
+
+            // 5 ?
+            RoomAsk(roomName: "5+", id: 5)
           ]
         ),
         // Слайдеры стоимости площади и этажа 
@@ -67,7 +66,7 @@ class _RoomsFilterState extends State<RoomsFilter> {
 
             // слайдер стоимости
             MySlider(lable: "Стоимость", description: "От 6 до 13 млн ₽", min: 6, max: 13, divisions: 7, valueName: "coast", filterRepository: roomFilterRepository),
-            
+
             // слайдер площади
             MySlider(lable: "Площадь", description: "От 37 до 93 м2", min: 37, max: 93, divisions: 56, valueName: "square", filterRepository: roomFilterRepository),
 
@@ -82,6 +81,7 @@ class _RoomsFilterState extends State<RoomsFilter> {
           child: ElevatedButton(
             onPressed: () {
               print(roomFilterRepository.GetValues());
+              //Navigator.of(context).pushNamed('/rooms-list');
             },
             child: const Text('Найти помещения', style: TextStyle(color: Colors.white)), // Текст кнопки
           )
@@ -91,3 +91,5 @@ class _RoomsFilterState extends State<RoomsFilter> {
     );
   }
 }
+
+// Этот код просто ужас программиста, но я его пока понимаю.

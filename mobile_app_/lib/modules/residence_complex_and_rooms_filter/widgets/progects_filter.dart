@@ -2,7 +2,7 @@
 
 
 
-import 'package:mobile_app_/modules/residence_complex_filter/widgets/Slider.dart';
+import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/Slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobile_app_/repositories/filters/progect_filters.dart';
@@ -21,9 +21,8 @@ class _ProgectFilterState extends State<ProgectFilter> {
     return   
     Column( 
       children: [
-          // слайдер стоимости
-          MySlider(lable: "Стоимость", description: "От 6 до 13 млн ₽", min: 6, max: 13, divisions: 7, valueName: "coast", filterRepository: roomFilterRepository),
-
+        // слайдер стоимости
+        MySlider(lable: "Стоимость", description: "От 6 до 13 млн ₽", min: 6, max: 13, divisions: 7, valueName: "coast", filterRepository: roomFilterRepository),
 
         // ignore: avoid_unnecessary_containers
          Container(

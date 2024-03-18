@@ -3,12 +3,11 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:mobile_app_/modules/residence_complex_filter/widgets/widgets.dart';
-import 'package:mobile_app_/modules/residence_complex_filter/bloc/rest_commun_filt_bloc.dart';
+import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/widgets.dart';
+import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/bloc/rest_commun_filt_bloc.dart';
 
 
 
@@ -37,32 +36,19 @@ class _RestCommunFilterState extends State<RestCommunFilter> {
     return Scaffold(
       body: Column(
         children: [
-            Container(
-                margin: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.8, top: MediaQuery.of(context).size.height * 0.02),
-                child:  IconButton( 
-                  icon: 
-                    SvgPicture.asset(
-                        'assets/svg/undo-arrow.svg',
-                        width: 40,
-                        height: 40,
-                    ),
-                  onPressed: () {
-                      Navigator.of(context).pushNamed('/', arguments: {});
-                  },
-                ),
-              ),
-          
-            Container(
-              margin: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.6, top: 25),
-              child:  Text("Фильтры", style: theme.textTheme.bodyMedium,),
-            ),
+
+          BackArrow(backUrl: '/'),
+
+          Container(
+            margin: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.6, top: 25),
+            child:  Text("Фильтры", style: theme.textTheme.bodyMedium,),
+          ),
           Expanded(
             child: Container(
             margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.085 , right: MediaQuery.of(context).size.width * 0.085, top: MediaQuery.of(context).size.height * 0.01),
             child:  BlocBuilder<RestCommunFilterBloc, RestCommunFilterState>(
               bloc: _restCommunFilterBloc,
               builder: (context, state) {
-                
                     final Row filter =  
                     Row(
                       children: [

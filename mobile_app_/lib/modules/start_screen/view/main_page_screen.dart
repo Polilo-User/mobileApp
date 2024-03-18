@@ -24,7 +24,7 @@ class _MainPageScreenState extends State<StatefulWidget> {
     ResidenceComplexList(),
     Chat(),
     News(),
-    Favorites(),
+    More(),
   ];
 
   void _onItemTapped(int index) {
