@@ -15,10 +15,9 @@ class _BuildState extends State<Build> {
   Widget build(BuildContext context) {
     final thme = Theme.of(context);
     return ListTile(
-
       title: InkWell(
         onTap: () {
-          print("Нажатие на карточку");
+          Navigator.of(context).pushNamed("/residence-complex-screen");
         },
         child: 
         Container(
@@ -78,12 +77,11 @@ class _BuildState extends State<Build> {
                     Container(
                       margin: const EdgeInsets.only(top: 20, left: 30),
                       child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[ 
-                    // Район
-                      const Text("Сити-квартал Октябрьский", style: TextStyle(fontSize: 20)), 
-                      Container(
-                        child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                      // Район
+                         const Text("Сити-квартал Октябрьский", style: TextStyle(fontSize: 20)),
+                        Row(
                           children: <Widget>[
                             Container(
                               width: 25,
@@ -92,22 +90,20 @@ class _BuildState extends State<Build> {
                                 borderRadius: BorderRadius.circular(7),
                                 color: const Color.fromARGB(185, 149, 240, 113),
                               ),
-                              child: const Text("₽", 
+                              child: const Text("₽",
                               style: TextStyle(fontSize: 18, color: Color.fromARGB(185, 70, 130, 47),),
                               textAlign: TextAlign.center,),
                             ),
-                            const SizedBox(width: 5), 
-                          // стоимость
+                            const SizedBox(width: 5),
                             Text(
-                              "От 6 млн", 
+                              "От 6 млн",
                               style: thme.textTheme.bodySmall,
                             ),
                           ],
-                      ),
-                    ),
-                    const Text("")
-                  ]
-                )
+                        ),
+                        const Text("")
+                      ]
+                    )
               ),
             ],
         )
