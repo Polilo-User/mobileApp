@@ -145,7 +145,7 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                           Text("IV КВ. 2026", style: thme.textTheme.labelLarge),
                         ],
                       ),
-                      Expanded(
+                      const Expanded(
                         child: SizedBox(),
                       ),
                       Container(
