@@ -22,7 +22,7 @@ class _ProgectFilterState extends State<ProgectFilter> {
     Column( 
       children: [
         // слайдер стоимости
-        MySlider(lable: "Стоимость", description: "От 6 до 13 млн ₽", min: 6, max: 13, divisions: 7, valueName: "coast", filterRepository: roomFilterRepository),
+        MySlider(lable: "Стоимость", units: "млн ₽", min: 6, max: 13, divisions: 7, valueName: "coast", filterRepository: roomFilterRepository),
 
         // ignore: avoid_unnecessary_containers
          Container(

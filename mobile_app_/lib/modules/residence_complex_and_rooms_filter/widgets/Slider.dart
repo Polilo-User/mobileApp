@@ -10,7 +10,7 @@ class MySlider extends StatefulWidget {
   MySlider({
     super.key, 
     required this.lable, 
-    required this.description, 
+    required this.units,
     required this.min, 
     required this.max, 
     required this.divisions, 
@@ -19,10 +19,12 @@ class MySlider extends StatefulWidget {
   });
 
   String lable;
-  String description;
+  String units;
+
   double min;
   double max;
-  int divisions; 
+
+  int divisions;
   String valueName;
   final FilterRepository filterRepository;
 
@@ -31,8 +33,6 @@ class MySlider extends StatefulWidget {
 }
 
 class _MySliderState extends State<MySlider> {
-
-  
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -45,10 +45,12 @@ class _MySliderState extends State<MySlider> {
           ),
           Container(
             margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.4),
-            child: Text(widget.description, style: theme.textTheme.labelLarge),
+            child:  Text("От "
+                    "${(widget.filterRepository.valueMap[widget.valueName] as RangeValues).start.round()} "
+                    "до ${(widget.filterRepository.valueMap[widget.valueName] as RangeValues).end.round()} "
+                    "${widget.units}", style: theme.textTheme.labelLarge),
           ),
-          Container(
-            child: RangeSlider(
+           RangeSlider(
             values: widget.filterRepository.valueMap[widget.valueName] as RangeValues,  
             min: widget.min, // Минимальное значение диапазона
             max: widget.max,
@@ -59,8 +61,7 @@ class _MySliderState extends State<MySlider> {
                 widget.filterRepository.valueMap[widget.valueName] = values;
               });
             }
-            )
-          ),
+          )
         ]
       );
   }

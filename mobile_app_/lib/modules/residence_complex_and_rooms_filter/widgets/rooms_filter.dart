@@ -65,13 +65,13 @@ class _RoomsFilterState extends State<RoomsFilter> {
           children: [
 
             // слайдер стоимости
-            MySlider(lable: "Стоимость", description: "От 6 до 13 млн ₽", min: 6, max: 13, divisions: 7, valueName: "coast", filterRepository: roomFilterRepository),
+            MySlider(lable: "Стоимость", units: "млн ₽", min: 6, max: 13, divisions: 7, valueName: "coast", filterRepository: roomFilterRepository),
 
             // слайдер площади
-            MySlider(lable: "Площадь", description: "От 37 до 93 м2", min: 37, max: 93, divisions: 56, valueName: "square", filterRepository: roomFilterRepository),
+            MySlider(lable: "Площадь", units: "м2", min: 37, max: 93, divisions: 56, valueName: "square", filterRepository: roomFilterRepository),
 
             // слайдер Этажей
-            MySlider(lable: "Этаж", description: "От 2 до 16", min: 2, max: 16, divisions: 14, valueName: "floor", filterRepository: roomFilterRepository),
+            MySlider(lable: "Этаж", units: "", min: 2, max: 16, divisions: 14, valueName: "floor", filterRepository: roomFilterRepository),
 
           ]
         ),
