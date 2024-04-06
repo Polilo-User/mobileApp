@@ -1,8 +1,9 @@
 
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/back_arrow.dart';
+import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/back_arrow_wihout_path.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/sales_office.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/widgets.dart';
 
@@ -16,13 +17,38 @@ class ResidenceComplexScreen extends StatefulWidget {
 class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
 
 
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollController.dispose(); // освобождаем ресурсы контроллера при выгрузке экрана
+    super.dispose();
+  }
+
+  void _UpScroll() {
+    _scrollController.animateTo(
+      _scrollController.position.pixels - MediaQuery.of(context).size.width * 0.2 * 2,
+      duration: const Duration(milliseconds: 200),
+      curve: Curves.fastOutSlowIn,
+    );
+  }
+
+  void _DownScroll() {
+    _scrollController.animateTo(
+      _scrollController.position.pixels + MediaQuery.of(context).size.width * 0.2 * 2,
+      duration: const Duration(milliseconds: 1),
+      curve: Curves.fastOutSlowIn,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     final thme = Theme.of(context);
+
     return Scaffold(
 
       body: SingleChildScrollView(
+          controller: _scrollController,
           child: Column(
           children: [
 
@@ -37,14 +63,13 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                 ),
                 Positioned(
                   child:  Center(
-                    child: BackArrow(backUrl: '/')
+                    child: BackArrowWithoutPath()
                   ),
                 ),
               ]
             ),
 
             Column(
-
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
 
@@ -162,6 +187,7 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
 
               // квартиры фильтр в mvp не будет 😎
               Container(
+
                 margin: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.04),
                 child: Column(
                   children: [
@@ -245,8 +271,8 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                   ),
                 ),
 
-                Benifits(),
-                SalesOffice()
+                Benifits(onDownPressed: _DownScroll, onUpPressed: _UpScroll),
+                SalesOffice(onDownPressed: _DownScroll, onUpPressed: _UpScroll)
 
               ],
             )

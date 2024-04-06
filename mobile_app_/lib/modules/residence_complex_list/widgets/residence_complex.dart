@@ -4,6 +4,8 @@
 import 'package:flutter/material.dart';
 
 class ResidenceComplex extends StatefulWidget {
+
+
   const ResidenceComplex({ Key? key }) : super(key: key);
 
   @override
@@ -14,12 +16,7 @@ class _ResidenceComplexState extends State<ResidenceComplex> {
   @override
   Widget build(BuildContext context) {
     final thme = Theme.of(context);
-    return ListTile(
-      title: InkWell(
-        onTap: () {
-          Navigator.of(context).pushNamed("/residence-complex-screen");
-        },
-        child: 
+    return
         Container(
           margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05, right: MediaQuery.of(context).size.width * 0.05),  
           decoration: 
@@ -107,8 +104,6 @@ class _ResidenceComplexState extends State<ResidenceComplex> {
               ),
             ],
         )
-      ),
-    )
   );
 }
 }

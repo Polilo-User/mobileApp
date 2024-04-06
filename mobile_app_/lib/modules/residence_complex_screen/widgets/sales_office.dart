@@ -6,7 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 
 class SalesOffice extends StatefulWidget {
-  const SalesOffice({super.key});
+
+  SalesOffice({super.key, required this.onUpPressed, required this.onDownPressed});
+
+  final VoidCallback onUpPressed;
+  final VoidCallback onDownPressed;
+
 
   @override
   State<SalesOffice> createState() => _SalesOfficeState();
@@ -35,10 +40,14 @@ class _SalesOfficeState extends State<SalesOffice> {
 
               final dropDownButton = InkWell(
                 onTap: () {
-                  if (state is CollapsedListState)
+                  if (state is CollapsedListState) {
                     dropDownBlock.add(ExpandListEvent());
-                  else
+                    widget.onDownPressed();
+                  }
+                  else {
                     dropDownBlock.add(CollapseListEvent());
+                    widget.onUpPressed();
+                  }
                 },
                 child: Row(
                   children: [

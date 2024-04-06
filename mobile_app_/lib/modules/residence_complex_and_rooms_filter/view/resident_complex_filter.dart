@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_app_/arguments/filter_argument.dart';
+import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/back_arrow_wihout_path.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/widgets.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/bloc/rest_commun_filt_bloc.dart';
 
@@ -57,7 +58,7 @@ class _RestCommunFilterState extends State<RestCommunFilter> {
       body: Column(
         children: [
 
-          BackArrow(backUrl: '/'),
+          BackArrowWithoutPath(),
 
           Container(
             margin: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.6, top: 25),

@@ -5,17 +5,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class BackArrow extends StatefulWidget {
-  BackArrow( {super.key, required this.backUrl, this.args = null} );
+class BackArrowWithoutPath extends StatefulWidget {
 
-  String backUrl;
-  dynamic? args;
+  BackArrowWithoutPath( {super.key, this.args = null} );
+
+  Map? args;
 
   @override
-  State<BackArrow> createState() => _BackArrowState();
+  State<BackArrowWithoutPath> createState() => _BackArrowWithoutPathState();
 }
 
-class _BackArrowState extends State<BackArrow> {
+class _BackArrowWithoutPathState extends State<BackArrowWithoutPath> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +28,7 @@ class _BackArrowState extends State<BackArrow> {
           height: 40,
         ),
         onPressed: () {
-          Navigator.of(context).pushNamed(widget.backUrl, arguments: widget.args);
+          Navigator.pop(context, widget.args);
         },
       ),
     );

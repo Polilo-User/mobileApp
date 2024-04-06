@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/back_arrow_wihout_path.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/widgets.dart';
 
 class LeadTime extends StatefulWidget {
@@ -16,7 +17,7 @@ class _LeadTimeState extends State<LeadTime> {
     return Scaffold(
       body: Column(
         children: [
-          BackArrow(backUrl: '/rest-commun-filter'),
+          BackArrowWithoutPath(),
 
 
         ],
