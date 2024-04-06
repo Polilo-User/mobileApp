@@ -3,14 +3,14 @@
 
 import 'package:flutter/material.dart';
 
-class Build extends StatefulWidget {
-  const Build({ Key? key }) : super(key: key);
+class ResidenceComplex extends StatefulWidget {
+  const ResidenceComplex({ Key? key }) : super(key: key);
 
   @override
-  _BuildState createState() => _BuildState();
+  _ResidenceComplexState createState() => _ResidenceComplexState();
 }
 
-class _BuildState extends State<Build> {
+class _ResidenceComplexState extends State<ResidenceComplex> {
   @override
   Widget build(BuildContext context) {
     final thme = Theme.of(context);

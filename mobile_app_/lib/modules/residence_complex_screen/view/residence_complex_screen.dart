@@ -6,9 +6,6 @@ import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/b
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/sales_office.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/widgets.dart';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobile_app_/modules/residence_complex_screen/blocs/blocs.dart';
-
 class ResidenceComplexScreen extends StatefulWidget {
   const ResidenceComplexScreen({super.key});
 

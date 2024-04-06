@@ -55,7 +55,7 @@ class _ResidenceComplexListState extends State<ResidenceComplexList> {
                     itemCount: 8,
                     // этого элемент листа
                     itemBuilder: (context, i) {
-                      return const Build();
+                      return const ResidenceComplex();
                     })
             ),
         ],
