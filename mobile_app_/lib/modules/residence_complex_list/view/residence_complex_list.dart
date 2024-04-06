@@ -13,11 +13,15 @@ class ResidenceComplexList extends StatefulWidget {
 }
 
 class _ResidenceComplexListState extends State<ResidenceComplexList> {
+
+  int _selectedIndex = -1; // индекс выбранного элемента
+  final ScrollController _scrollController = ScrollController(); // контроллер прокрутки
+
   @override
   Widget build(BuildContext context) {
-    return 
+    return
       Column(
-        children: [  
+        children: [
             Row(
               children: [
                   Container(
@@ -32,6 +36,7 @@ class _ResidenceComplexListState extends State<ResidenceComplexList> {
                       ),
                     ),
                     margin: EdgeInsets.only(
+                      bottom: MediaQuery.of(context).size.height * 0.01,
                       left: MediaQuery.of(context).size.width * 0.8, // 10% ширины экрана слева и справа
                       top: MediaQuery.of(context).size.height * 0.05, // 5% высоты экрана сверху и снизу
                     ),
@@ -44,7 +49,7 @@ class _ResidenceComplexListState extends State<ResidenceComplexList> {
                               height: 20,
                           ),
                         onPressed: () {
-                           Navigator.of(context).pushNamed('/rest-commun-filter', arguments: {});
+                           Navigator.of(context).pushNamed('/rest-commun-filter');
                         },
                     )
                   )
@@ -52,10 +57,34 @@ class _ResidenceComplexListState extends State<ResidenceComplexList> {
             ),
             Expanded(
                   child: ListView.builder(
+                    controller: _scrollController,
                     itemCount: 8,
                     // этого элемент листа
                     itemBuilder: (context, i) {
-                      return const Build();
+                      return  ListTile(
+                          selected: i == _selectedIndex,  // проверяем, выбран ли текущий элемент
+                          title: InkWell(
+                            onTap: () {
+                              setState(() {
+                                _selectedIndex = i; // сохраняем индекс выбранного элемента
+                              });
+                              Navigator.of(context,
+                              ).pushNamed("/residence-complex-screen").then( (_) => {
+                                  if (_selectedIndex != -1)
+                                  {
+                                    // прокручиваем список к выбранному элементу
+                                    _scrollController.animateTo(
+                                    _selectedIndex * MediaQuery.of(context).size.width * 0.5,
+                                    // 50.0 - это высота одного элемента в пикселях
+                                    duration: Duration(milliseconds: 500),
+                                    curve: Curves.ease,
+                                  )
+                                }}
+                              );
+                            },
+                            child: const ResidenceComplex()
+                        )
+                      );
                     })
             ),
         ],

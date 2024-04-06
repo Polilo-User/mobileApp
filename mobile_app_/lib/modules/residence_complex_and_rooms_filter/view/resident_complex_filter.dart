@@ -5,7 +5,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:mobile_app_/arguments/filter_argument.dart';
+import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/back_arrow_wihout_path.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/widgets.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/bloc/rest_commun_filt_bloc.dart';
 
@@ -24,8 +25,6 @@ class _RestCommunFilterState extends State<RestCommunFilter> {
 
   @override
   void initState() {
-    // добавляем нужный event в bloc
-    _restCommunFilterBloc.add(LoadRoomFilterEvennt());
     super.initState();
   }
 
@@ -33,11 +32,33 @@ class _RestCommunFilterState extends State<RestCommunFilter> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
+    // добавляем нужный event в bloc
+    final args = ModalRoute.of(context)?.settings.arguments;
+
+    if (args is! Map) {
+      _restCommunFilterBloc.add(LoadRoomFilterEvennt());
+    }
+    else {
+      final filterType = args['previousFilter'] as FilterType?;
+      if (filterType == null) {
+        _restCommunFilterBloc.add(LoadRoomFilterEvennt());
+      }
+      else {
+        final roomsFilter = {
+          FilterType.RoomFilter: () =>
+              _restCommunFilterBloc.add(LoadRoomFilterEvennt()),
+          FilterType.ResidentComplexFilter: () =>
+              _restCommunFilterBloc.add(LoadProgectsFilterEvent()),
+        };
+        roomsFilter[filterType]!();
+      }
+    }
+
     return Scaffold(
       body: Column(
         children: [
 
-          BackArrow(backUrl: '/'),
+          BackArrowWithoutPath(),
 
           Container(
             margin: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.6, top: 25),

@@ -9,7 +9,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/benifit_child.dart';
 
 class Benifits extends StatefulWidget {
-  const Benifits({super.key});
+  Benifits({super.key, required this.onUpPressed, required this.onDownPressed});
+
+  final VoidCallback onUpPressed;
+  final VoidCallback onDownPressed;
+
 
   @override
   State<Benifits> createState() => _BenifitsState();
@@ -40,10 +44,14 @@ class _BenifitsState extends State<Benifits> {
 
               final dropDownButton = InkWell(
                 onTap: () {
-                  if (state is CollapsedListState)
+                  if (state is CollapsedListState) {
                     dropDownBlock.add(ExpandListEvent());
-                  else
+                    widget.onDownPressed();
+                  }
+                  else {
                     dropDownBlock.add(CollapseListEvent());
+                    widget.onUpPressed();
+                  }
                 },
                 child: Row(
                   children: [

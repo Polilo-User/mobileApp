@@ -7,6 +7,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
+import 'package:mobile_app_/arguments/filter_argument.dart';
+
 import 'package:mobile_app_/repositories/filters/room_filter_repository.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/room_ask.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/Slider.dart';
@@ -81,7 +83,7 @@ class _RoomsFilterState extends State<RoomsFilter> {
           child: ElevatedButton(
             onPressed: () {
               print(roomFilterRepository.GetValues());
-              //Navigator.of(context).pushNamed('/rooms-list');
+              Navigator.of(context).pushNamed('/rooms-list', arguments: {"to": "/rest-commun-filter", "previousFilter": FilterType.RoomFilter});
             },
             child: const Text('Найти помещения', style: TextStyle(color: Colors.white)), // Текст кнопки
           )
