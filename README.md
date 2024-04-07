@@ -1,10 +1,10 @@
 
 Список участников и их роли:
   1.	Мироненко Дмитрий – full stack разработчик. vk: https://vk.com/helgiorno
-  2.	Кожевников Иван – full stack разработчик, Scrum master. email: vgssfawfe@list.ru
+  2.	Кожевников Иван – flutter разработчик, Scrum master. email: vgssfawfe@list.ru
   3.	Голубовская Софья – главный дизайнер. vk: https://vk.com/fefe_02
   4.	Павел Потехин – дизайнер. vk: https://vk.com/pubi0
-  5.  Александр Баранов - flutter разработчик vk: https://vk.com/odoamnetheperl
+  5.  Александр Баранов - дизайнер vk: https://vk.com/odoamnetheperl
 
 Краткая информация о проекте:
   Проект представляет собой приложение платформу для ЖК компаний.
