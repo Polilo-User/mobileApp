@@ -255,7 +255,7 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                       ),
                       child: ElevatedButton(
                         onPressed: () {
-                          print("хайповая кнопка");
+                          Navigator.of(context).pushNamed("/rooms-list");
                         },
                         child: const Text('Все квартиры в этом ЖК', style: TextStyle(color: Colors.white, fontFamily: "Montserrat")), // Текст кнопки
                       )

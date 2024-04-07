@@ -19,7 +19,8 @@ class _BackArrowWithoutPathState extends State<BackArrowWithoutPath> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.8, top: MediaQuery.of(context).size.height * 0.02),
+      alignment: Alignment.topLeft,
+      margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.01, top: MediaQuery.of(context).size.height * 0.025),
       child:  IconButton(
         icon:
         SvgPicture.asset(

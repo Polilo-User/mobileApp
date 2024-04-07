@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/blocs/drop_down_bloc/drop_down_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:mobile_app_/modules/residence_complex_screen/widgets/sales_office_child.dart';
 
 class SalesOffice extends StatefulWidget {
 
@@ -78,93 +79,51 @@ class _SalesOfficeState extends State<SalesOffice> {
               }
 
               if(state is ExpandedListState) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                return  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
 
-                  children: [
-                    dropDownButton,
+                    children: [
+                      dropDownButton,
 
-                    Container(
-                      margin: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.03),
-                    ),
+                      Container(
+                        margin: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.03),
+                      ),
 
-                    Container(
-                        margin: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.04),
-                        child: Row(
-                            children: [
-                              Container(
-                                  margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.12),
-                                  child: SvgPicture.asset(
-                                    'assets/svg/geo-point.svg',
-                                    width: 20,
-                                    height: 20,
-                                  )
-                              ),
+                      Container(
+                        margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.12),
+                        child: Column(
+                          children: [
 
-                              Container(
-                                margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
-                                child: Text("г. Красноярск", style: thme.textTheme.bodySmall,),
-                              )
-                            ]
-                        )
-                    ),
+                            //  'assets/svg/geo-point.svg' and 'г. Красноярск'
+                            SalesOfficeChild(icoPath: 'assets/svg/geo-point.svg', text: 'г. Красноярск'),
 
-                    Container(
-                        margin: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.04),
-                        child: Row(
-                            children: [
-                              Container(
-                                  margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.12),
-                                  child: SvgPicture.asset(
-                                    'assets/svg/green-clock.svg',
-                                    width: 20,
-                                    height: 20,
-                                  )
-                              ),
+                            // 'assets/svg/green-clock.svg' and 'В рабочее время с 9:00 до 18:00'
+                            SalesOfficeChild(icoPath: 'assets/svg/green-clock.svg', text: 'В рабочее время с 9:00 до 18:00'),
 
-                              Container(
-                                margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
-                                child: Text("г. Красноярск", style: thme.textTheme.bodySmall,),
-                              )
-                            ]
-                        )
-                    ),
+                            // 'assets/svg/green-phone.svg' and '+7 (391) 217-87-23'
+                            SalesOfficeChild(icoPath: 'assets/svg/green-phone.svg', text: '+7 (391) 217-87-23'),
+                          ],
+                        ),
+                      ),
 
-                    Container(
-                        margin: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.04, bottom: MediaQuery.of(context).size.width * 0.07),
-                        child: Row(
-                            children: [
-                              Container(
-                                  margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.12),
-                                  child: SvgPicture.asset(
-                                    'assets/svg/green-phone.svg',
-                                    width: 20,
-                                    height: 20,
-                                  )
-                              ),
+                      Container(
+                        margin: EdgeInsets.only(bottom: MediaQuery.of(context).size.width * 0.03),
+                      ),
 
-                              Container(
-                                margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.05),
-                                child: Text("г. Красноярск", style: thme.textTheme.bodySmall,),
-                              )
-                            ]
-                        )
-                    ),
-
-                    Row(
-                      children: [
+                      Row(
+                        children: [
                           Container(
-                            margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.2),
-                            child: ElevatedButton(
-                              style: ButtonStyle(
-                                  backgroundColor: MaterialStateProperty.all(
-                                      const Color.fromRGBO(35, 79, 104, 1)
-                                  )
-                              ),
-                              onPressed: () {
-                              },
-                              child: const Text('Помещения', style: TextStyle(color: Colors.white)), // Текст кнопки
-                            )
+                              margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.2),
+                              child: ElevatedButton(
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        const Color.fromRGBO(35, 79, 104, 1)
+                                    )
+                                ),
+                                onPressed: () {
+                                },
+                                child: const Text('Помещения', style: TextStyle(color: Colors.white)), // Текст кнопки
+                              )
                           ),
                           SizedBox(width: MediaQuery.of(context).size.width * 0.02),
                           ElevatedButton(
@@ -175,10 +134,10 @@ class _SalesOfficeState extends State<SalesOffice> {
                             },
                             child: const Text('Маршрут', style: TextStyle(color: Colors.white)),
                           )
-                      ],
-                    )
+                        ],
+                      )
 
-                  ],
+                    ],
                 );
               }
               return Container();

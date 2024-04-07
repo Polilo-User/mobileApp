@@ -19,10 +19,10 @@ final whiteTheme = ThemeData(
         fontSize: 14.25,
       ),
       bodyMedium: TextStyle(
-          fontFamily: "Montserrat", fontSize: 20, fontWeight: FontWeight.w700),
+          fontFamily: "Montserrat", fontSize: 17),
       labelSmall: TextStyle(
         color: Color.fromRGBO(110, 110, 110, 0.478),
-        fontSize: 20,
+        fontSize: 17,
       ),
       labelLarge: TextStyle(
         fontFamily: "Montserrat", fontSize: 15
