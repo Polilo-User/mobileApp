@@ -44,7 +44,7 @@ class _RestCommunFilterState extends State<RestCommunFilter> {
         _restCommunFilterBloc.add(LoadRoomFilterEvennt());
       }
       else {
-        final roomsFilter = {
+        final Map<FilterType, VoidCallback> roomsFilter = {
           FilterType.RoomFilter: () =>
               _restCommunFilterBloc.add(LoadRoomFilterEvennt()),
           FilterType.ResidentComplexFilter: () =>
@@ -58,7 +58,7 @@ class _RestCommunFilterState extends State<RestCommunFilter> {
       body: Column(
         children: [
 
-          BackArrowWithoutPath(),
+          BackArrowWithoutPath(url: '/'),
 
           Container(
             margin: EdgeInsets.only(right: MediaQuery.of(context).size.width * 0.6, top: 25),
