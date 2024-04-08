@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:mobile_app_/arguments/filter_argument.dart';
+import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/text_with_arrow.dart';
 
 import 'package:mobile_app_/repositories/filters/room_filter_repository.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/room_ask.dart';
@@ -75,6 +76,10 @@ class _RoomsFilterState extends State<RoomsFilter> {
             // слайдер Этажей
             MySlider(lable: "Этаж", units: "", min: 2, max: 16, divisions: 14, valueName: "floor", filterRepository: roomFilterRepository),
 
+            Container(
+              margin: const EdgeInsets.only(top: 20, bottom: 20),
+              child: TextWithArrow(filterRepository: roomFilterRepository, previousFilter: FilterType.RoomFilter),
+            )
           ]
         ),
 
@@ -83,7 +88,7 @@ class _RoomsFilterState extends State<RoomsFilter> {
           child: ElevatedButton(
             onPressed: () {
               print(roomFilterRepository.GetValues());
-              Navigator.of(context).pushNamed('/rooms-list', arguments: {"to": "/rest-commun-filter", "previousFilter": FilterType.RoomFilter});
+              Navigator.of(context).pushNamed('/rooms-list');
             },
             child: const Text('Найти помещения', style: TextStyle(color: Colors.white)), // Текст кнопки
           )

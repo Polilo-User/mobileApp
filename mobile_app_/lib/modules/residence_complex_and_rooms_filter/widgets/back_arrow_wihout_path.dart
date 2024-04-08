@@ -7,9 +7,10 @@ import 'package:flutter_svg/svg.dart';
 
 class BackArrowWithoutPath extends StatefulWidget {
 
-  BackArrowWithoutPath( {super.key, this.args = null} );
+  BackArrowWithoutPath( {super.key, this.args = null, this.url = null} );
 
   Map? args;
+  String? url;
 
   @override
   State<BackArrowWithoutPath> createState() => _BackArrowWithoutPathState();
@@ -29,7 +30,11 @@ class _BackArrowWithoutPathState extends State<BackArrowWithoutPath> {
           height: 40,
         ),
         onPressed: () {
-          Navigator.pop(context, widget.args);
+          if (widget.url != null) {
+            Navigator.of(context).popAndPushNamed(widget.url!, arguments: widget.args);
+          } else {
+            Navigator.pop(context, widget.args);
+          }
         },
       ),
     );

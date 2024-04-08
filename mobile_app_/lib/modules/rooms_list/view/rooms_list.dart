@@ -4,7 +4,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/widgets.dart';
 import 'package:mobile_app_/modules/rooms_list/widgets/widgets.dart';
-import 'package:mobile_app_/arguments/filter_argument.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/back_arrow_wihout_path.dart';
 
 class RoomsList extends StatelessWidget {
@@ -14,15 +13,10 @@ class RoomsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)?.settings.arguments;
-    FilterType? previousFilter = null;
-    if (args is Map) {
-      previousFilter = args["previousFilter"] as FilterType;
-    }
     return Scaffold(
       body: Column(
         children: [
-          BackArrowWithoutPath(args: { "previousFilter": previousFilter },),
+          BackArrowWithoutPath(),
           Container(
             margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.08, top: MediaQuery.of(context).size.height * 0.02, bottom: MediaQuery.of(context).size.height * 0.02),
             alignment: Alignment.bottomLeft,
