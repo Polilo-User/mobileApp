@@ -5,18 +5,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class BackArrowWithoutPath extends StatefulWidget {
+class HardBackArrow extends StatefulWidget {
 
-  BackArrowWithoutPath( {super.key, this.args = null, this.url = null} );
+  HardBackArrow( {super.key, this.args = null, this.url = null} );
 
   Map? args;
   String? url;
 
   @override
-  State<BackArrowWithoutPath> createState() => _BackArrowWithoutPathState();
+  State<HardBackArrow> createState() => _HardBackArrowState();
 }
 
-class _BackArrowWithoutPathState extends State<BackArrowWithoutPath> {
+class _HardBackArrowState extends State<HardBackArrow> {
   @override
   Widget build(BuildContext context) {
     return Container(

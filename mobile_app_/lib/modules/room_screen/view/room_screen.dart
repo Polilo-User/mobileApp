@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/back_arrow_wihout_path.dart';
+import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/hard_back_arrow.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/sales_office_child.dart';
 
 class RoomScreen extends StatefulWidget {
@@ -24,7 +24,7 @@ class _RoomScreenState extends State<RoomScreen> {
 
             Row (
               children: [
-                BackArrowWithoutPath(),
+                HardBackArrow(),
                 const Expanded(child: SizedBox()),
                 Container(
                   height: 40,

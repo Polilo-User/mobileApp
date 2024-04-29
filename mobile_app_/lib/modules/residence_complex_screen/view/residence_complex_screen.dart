@@ -3,9 +3,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/back_arrow_wihout_path.dart';
+import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/hard_back_arrow.dart';
+import 'package:mobile_app_/modules/residence_complex_list/widgets/residence_complex.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/sales_office.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/widgets.dart';
+
+import 'package:mobile_app_/repositories/residence_complex/redince_complex.dart' as models;
+
 
 class ResidenceComplexScreen extends StatefulWidget {
   const ResidenceComplexScreen({super.key});
@@ -41,10 +45,23 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
     );
   }
 
+  models.ResidenceComplex? residenceCpmplex;
+
+  @override
+  void didChangeDependencies() {
+    final args = ModalRoute.of(context)?.settings.arguments;
+
+    assert(args != null && args is Map, 'предай Map аргумент бака !!!!');
+
+    final mapargs = args as Map;
+    residenceCpmplex = mapargs['residenceComplex'] as models.ResidenceComplex?;
+
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     final thme = Theme.of(context);
-
     return Scaffold(
 
       body: SingleChildScrollView(
@@ -56,14 +73,14 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
             Stack(
               children: [
                 Image.network(
-                  "https://i.pinimg.com/474x/de/a4/ff/dea4ffd5d90a388ccfed949ccdcbac5a.jpg",
+                  residenceCpmplex!.imgUrl,
                   width: MediaQuery.of(context).size.width * 1.0,
                   height: MediaQuery.of(context).size.width * 0.75,
                   fit: BoxFit.cover,
                 ),
                 Positioned(
                   child:  Center(
-                    child: BackArrowWithoutPath()
+                    child: HardBackArrow()
                   ),
                 ),
               ]
@@ -79,7 +96,7 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                     left: MediaQuery.of(context).size.width * 0.06,
                     bottom: MediaQuery.of(context).size.width * 0.02
                 ),
-                child: const Text("Сити-квартал Октябрьский")
+                child: Text(residenceCpmplex!.name)
               ),
 
               // средняя цена

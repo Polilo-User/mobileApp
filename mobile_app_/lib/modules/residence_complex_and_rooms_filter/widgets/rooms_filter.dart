@@ -76,10 +76,7 @@ class _RoomsFilterState extends State<RoomsFilter> {
             // слайдер Этажей
             MySlider(lable: "Этаж", units: "", min: 2, max: 16, divisions: 14, valueName: "floor", filterRepository: roomFilterRepository),
 
-            Container(
-              margin: const EdgeInsets.only(top: 20, bottom: 20),
-              child: TextWithArrow(filterRepository: roomFilterRepository, previousFilter: FilterType.RoomFilter),
-            )
+
           ]
         ),
 

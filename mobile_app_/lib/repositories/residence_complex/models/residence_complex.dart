@@ -2,32 +2,16 @@
 
 
 import 'package:mobile_app_/repositories/rooms/models/room.dart';
-import './sales_office.dart';
 
 class ResidenceComplex {
 
-  String description;
-  List<Room> apartments;
-  String deliveryDate;
-  List<String> advantages;
-  SalesOffice salesOffice;
+  String name;
+  String imgUrl;
 
   ResidenceComplex ({
-    required this.description,
-    required this.apartments,
-    required this.deliveryDate,
-    required this.advantages,
-    required this.salesOffice,
+    required this.imgUrl,
+    required this.name,
   });
 
-  Room cheapestApartment() {
-    Room cheapest = apartments[0];
-    for (var apartment in apartments) {
-      if (apartment.price < cheapest.price) {
-        cheapest = apartment;
-      }
-    }
-    return cheapest;
-  }
 
 }

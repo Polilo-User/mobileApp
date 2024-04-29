@@ -6,7 +6,10 @@ import 'package:flutter/material.dart';
 class ResidenceComplex extends StatefulWidget {
 
 
-  const ResidenceComplex({ Key? key }) : super(key: key);
+   ResidenceComplex({ Key? key, required this.name, required this.imgUrl }) : super(key: key);
+
+   String name;
+   String imgUrl;
 
   @override
   _ResidenceComplexState createState() => _ResidenceComplexState();
@@ -44,7 +47,7 @@ class _ResidenceComplexState extends State<ResidenceComplex> {
                       child: Stack(
                         children: [ 
                           Image.network(
-                            "https://i.pinimg.com/474x/de/a4/ff/dea4ffd5d90a388ccfed949ccdcbac5a.jpg",
+                            widget.imgUrl,
                             width: MediaQuery.of(context).size.width * 1.0,
                             height: MediaQuery.of(context).size.width * 0.5,
                             fit: BoxFit.cover,
@@ -77,7 +80,7 @@ class _ResidenceComplexState extends State<ResidenceComplex> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                       // Район
-                         const Text("Сити-квартал Октябрьский", style: TextStyle(fontSize: 20)),
+                        Text(widget.name, style: TextStyle(fontSize: 16)),
                         Row(
                           children: <Widget>[
                             Container(

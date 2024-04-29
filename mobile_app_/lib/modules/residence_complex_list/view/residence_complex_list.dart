@@ -1,9 +1,18 @@
 
 
 
-import 'package:mobile_app_/modules/residence_complex_list/widgets/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/bloc/rest_commun_filt_bloc.dart';
+import 'package:mobile_app_/modules/residence_complex_list/widgets/widgets.dart' as widgets;
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_app_/modules/residence_complex_list/bloc/repository_list_bloc.dart';
+import 'package:mobile_app_/repositories/residence_complex/redince_complex.dart';
+
+import '../widgets/filterIco.dart';
 
 class ResidenceComplexList extends StatefulWidget {
   const ResidenceComplexList({ Key? key }) : super(key: key);
@@ -14,54 +23,58 @@ class ResidenceComplexList extends StatefulWidget {
 
 class _ResidenceComplexListState extends State<ResidenceComplexList> {
 
+  final _repositoryListBloc = RepositoryListBloc(GetIt.I<ResidenceComplexRepository>());
+
+
+  @override
+  void initState() {
+    // добавляем нужный event в bloc
+    _repositoryListBloc.add(LoadRepositoryList());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
+    return  Column(
+        children: [
           Row(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: const Color.fromRGBO(239, 255, 218, 1),
-                  borderRadius: BorderRadius.circular(10),
-                  border: const BorderDirectional(
-                    bottom: BorderSide(color: Color.fromRGBO(118, 197, 19, 1)),
-                    top: BorderSide(color: Color.fromRGBO(118, 197, 19, 1)),
-                    start: BorderSide(color: Color.fromRGBO(118, 197, 19, 1)),
-                    end: BorderSide(color: Color.fromRGBO(118, 197, 19, 1)),
-                  ),
-                ),
-                margin: EdgeInsets.only(
-                  bottom: MediaQuery.of(context).size.height * 0.01,
-                  left: MediaQuery.of(context).size.width * 0.8, // 10% ширины экрана слева и справа
-                  top: MediaQuery.of(context).size.height * 0.05, // 5% высоты экрана сверху и снизу
-                ),
-                child:
-                  IconButton(
-                    icon: SvgPicture.asset('assets/svg/build-filter.svg', width: 20, height: 20),
-                    onPressed: () {
-                       Navigator.of(context).pushNamed('/rest-commun-filter');
-                    },
-                )
+              FilterIco(path: '/rest-commun-filter'),
+            ],
+          ),
+          Expanded(
+
+
+              child:RefreshIndicator(
+                onRefresh: () async { _repositoryListBloc.add(LoadRepositoryList()); },
+                child: BlocBuilder<RepositoryListBloc, RepositoryListState>(
+                bloc: _repositoryListBloc,
+                builder: (context, state) {
+
+
+                  if (state is RepositoryListLoaded) {
+                    return ListView.builder(
+                        itemCount: state.complexList.length,
+                        itemBuilder: (context, i) {
+                          return ListTile(
+                            title: InkWell(
+                                onTap: () {
+                                  Navigator.of(context).pushNamed("/residence-complex-screen", arguments: { 'residenceComplex' : state.complexList[i] } );
+                                },
+                                child: widgets.ResidenceComplex(name: state.complexList[i].name, imgUrl: state.complexList[i].imgUrl)
+                            )
+                          );
+                        }
+                    );
+                  }
+
+                  return const Center(child: CircularProgressIndicator());
+
+                }
               )
-          ],
-        ),
-        Expanded(
-          child: ListView.builder(
-            itemCount: 8,
-            itemBuilder: (context, i) {
-              return ListTile(
-                title: InkWell(
-                  onTap: () {
-                    Navigator.of(context).pushNamed("/residence-complex-screen");
-                  },
-                  child: const ResidenceComplex()
-                ),
-              );
-            }
-          )
-        ),
-      ],
+            )
+          ),
+        ],
     );
   }
 }

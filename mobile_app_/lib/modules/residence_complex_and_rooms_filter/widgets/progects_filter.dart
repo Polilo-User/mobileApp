@@ -36,7 +36,7 @@ class _ProgectFilterState extends State<ProgectFilter> {
          Container(
           child: ElevatedButton(
             onPressed: () {
-              print(projectFilterRepository.GetValues());
+              Navigator.of(context).popAndPushNamed("/");
             },
             child: const Text('Найти проекты', style: TextStyle(color: Colors.white)), // Текст кнопки
           )

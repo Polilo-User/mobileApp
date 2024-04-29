@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/back_arrow_wihout_path.dart';
+import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/hard_back_arrow.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/widgets.dart';
 
 import '../../../arguments/filter_argument.dart';
@@ -23,29 +23,14 @@ class _LeadTimeState extends State<LeadTime> {
   @override
   Widget build(BuildContext context) {
 
-    final args = ModalRoute.of(context)?.settings.arguments;
-    FilterType? previousFilter;
 
-    if (args is Map) {
-      previousFilter = args["previousFilter"] as FilterType;
-    }
-
-    if (previousFilter == null) {
-      throw Exception("Why previousFilter == null ?");
-    }
-
-    final Map<FilterType, FilterRepository> filter = {
-      FilterType.RoomFilter: GetIt.I<RoomFilterRepository>(),
-      FilterType.ResidentComplexFilter: GetIt.I<ProjectFilterRepository>()
-    };
-
-    final FilterRepository filterRepository = filter[previousFilter]!;
+    final ProjectFilterRepository filterRepository = GetIt.I<ProjectFilterRepository>();
 
 
     return Scaffold(
       body: Column(
         children: [
-          BackArrowWithoutPath(url: '/rest-commun-filter', args: { "previousFilter": previousFilter } ),
+          HardBackArrow(url: '/rest-commun-filter', args: { "previousFilter": FilterType.ResidentComplexFilter } ),
           Container(
             margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.04, top: MediaQuery.of(context).size.height * 0.02,),
             alignment: Alignment.bottomLeft,
