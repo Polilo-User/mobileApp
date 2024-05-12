@@ -33,9 +33,8 @@ class ResidenceComplexRepository {
     3: "III",
     4: "IV"
   };
-
-
-// "Неважно", "III КВ. 2024", "IV КВ. 2024", "III КВ. 2025", "IV КВ. 2025", "IV КВ. 2026"
+  
+  // "Неважно", "III КВ. 2024", "IV КВ. 2024", "III КВ. 2025", "IV КВ. 2025", "IV КВ. 2026"
   Future<Map<String, dynamic>> getFilterOptions(String leadTime) async {
 
     if (leadTime == "Неважно") {

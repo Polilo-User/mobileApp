@@ -70,25 +70,34 @@ class _ResidenceComplexListState extends State<ResidenceComplexList> {
                 // если загрузка не удалась
                 if (state is ResidenceComplexListLoadFailed) {
                   return
-                  Container(
-                    margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),
-                    child: Column(
-                      children: [
-                        const Center(child: Text("Не удалось загрузить данные")),
-                        SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-                        ElevatedButton(
-                          onPressed: () { _repositoryListBloc.add(LoadRepositoryList()); },
-                          child: const Text("Повторить попытку", style: TextStyle(color: Colors.white)),
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  const Color.fromRGBO(35, 79, 104, 1)
-                              )),
-                        )
-                      ],
-                    )
-                  );
+                    Container(
+                      margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),
+                      child: Column(
+                        children: [
+                          const Center(child: Text("Не удалось загрузить данные")),
+                          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                          ElevatedButton(
+                            onPressed: () { _repositoryListBloc.add(LoadRepositoryList()); },
+                            child: const Text("Повторить попытку", style: TextStyle(color: Colors.white)),
+                            style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(
+                                    const Color.fromRGBO(35, 79, 104, 1)
+                                )),
+                          )
+                        ],
+                      )
+                    );
+                  }
 
-                }
+                  if (state is ResidenceComplexListEmpty) {
+                    return Container(
+                      margin: EdgeInsets.only(
+                        top: MediaQuery.of(context).size.height * 0.3,
+                        left: MediaQuery.of(context).size.width * 0.1),
+                      child: Text("Не найдено подходящих проектов под параметры фильтра")
+                    );
+                  }
+
 
 
                 return const Center(child: CircularProgressIndicator());

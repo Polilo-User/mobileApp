@@ -65,7 +65,7 @@ class _ResidenceComplexState extends State<ResidenceComplex> {
                               ),
                               child: Center(
                                 child: Text(
-                                  widget.complex.leadTime,
+                                  widget.complex.leadTime + " Квартал",
                                   style: const TextStyle(fontSize: 13, color: Colors.white, fontFamily: "Montserrat"),
                                 ),
                               ),

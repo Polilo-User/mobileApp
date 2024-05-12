@@ -33,7 +33,7 @@ class _RoomsFilterState extends State<RoomsFilter> {
 
       children: [
 
-        // Корпусов в MVP не будет 😎 или будут ?
+        // Корпусов в MVP не будет 😎 ?
 
         // Количество комнат  
         Container(
@@ -82,7 +82,6 @@ class _RoomsFilterState extends State<RoomsFilter> {
          Container(
           child: ElevatedButton(
             onPressed: () {
-              //Navigator.of(context).pop();
               Navigator.of(context).popAndPushNamed('/rooms-list');
             },
             child: const Text('Найти помещения', style: TextStyle(color: Colors.white)), // Текст кнопки
