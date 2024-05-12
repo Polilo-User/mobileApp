@@ -1,15 +1,14 @@
 
 
-
+import 'package:mobile_app_/repositories/residence_complex/redince_complex.dart' as model;
 import 'package:flutter/material.dart';
 
 class ResidenceComplex extends StatefulWidget {
 
 
-   ResidenceComplex({ Key? key, required this.name, required this.imgUrl }) : super(key: key);
+   ResidenceComplex({ Key? key, required this.complex }) : super(key: key);
 
-   String name;
-   String imgUrl;
+   model.ResidenceComplex complex;
 
   @override
   _ResidenceComplexState createState() => _ResidenceComplexState();
@@ -43,15 +42,16 @@ class _ResidenceComplexState extends State<ResidenceComplex> {
                         topLeft: Radius.circular(10), 
                         topRight: Radius.circular(10), 
                       ),
-                    // url изображения ЖК комплекса
                       child: Stack(
                         children: [ 
                           Image.network(
-                            widget.imgUrl,
+                            widget.complex.imgUrl, // url изображения ЖК комплекса
                             width: MediaQuery.of(context).size.width * 1.0,
                             height: MediaQuery.of(context).size.width * 0.5,
                             fit: BoxFit.cover,
                           ),
+
+
                           Positioned(
                             top: 20,
                             left: MediaQuery.of(context).size.width * 0.01,
@@ -63,10 +63,10 @@ class _ResidenceComplexState extends State<ResidenceComplex> {
                                 color: const Color.fromARGB(255, 80, 80, 80).withOpacity(0.5), // Прозрачный зеленый фон
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              child: const Center(
+                              child: Center(
                                 child: Text(
-                                  'IV кв. 2026',
-                                  style: TextStyle(fontSize: 13, color: Colors.white, fontFamily: "Montserrat"),
+                                  widget.complex.leadTime,
+                                  style: const TextStyle(fontSize: 13, color: Colors.white, fontFamily: "Montserrat"),
                                 ),
                               ),
                             ),
@@ -80,7 +80,7 @@ class _ResidenceComplexState extends State<ResidenceComplex> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                       // Район
-                        Text(widget.name, style: TextStyle(fontSize: 16)),
+                        Text(widget.complex.name, style: const TextStyle(fontSize: 16)),
                         Row(
                           children: <Widget>[
                             Container(
@@ -96,7 +96,7 @@ class _ResidenceComplexState extends State<ResidenceComplex> {
                             ),
                             const SizedBox(width: 5),
                             Text(
-                              "От 6 млн",
+                              "${widget.complex.lowestPrice.toString()} млн",
                               style: thme.textTheme.bodySmall,
                             ),
                           ],

@@ -5,13 +5,15 @@
 
 part of 'repository_list_bloc.dart';
 
-abstract class RepositoryListState {}
+abstract class ResidenceComplexState {}
 
-class CryptoListInitial extends RepositoryListState {}
+class ResidenceComplexInitial extends ResidenceComplexState {}
 
-class RepositoryListLoaded extends RepositoryListState {
-  RepositoryListLoaded({required this.complexList});
+class ResidenceComplexListLoaded extends ResidenceComplexState {
+  ResidenceComplexListLoaded({required this.complexList});
   final List<ResidenceComplex> complexList;
 }
 
-class RepositoryListError extends RepositoryListState {}
+class ResidenceComplexListLoadFailed extends ResidenceComplexState {}
+
+class ResidenceComplexListEmpty extends ResidenceComplexState {}

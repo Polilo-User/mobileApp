@@ -9,7 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/benifit_child.dart';
 
 class Benifits extends StatefulWidget {
-  Benifits({super.key, required this.onUpPressed, required this.onDownPressed});
+  const Benifits({super.key, required this.onUpPressed, required this.onDownPressed});
 
   final VoidCallback onUpPressed;
   final VoidCallback onDownPressed;
@@ -59,7 +59,7 @@ class _BenifitsState extends State<Benifits> {
                       margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.06),
                       child: Text("Приймущества", style: thme.textTheme.bodyMedium,),
                     ),
-                    Expanded(
+                    const Expanded(
                       child: SizedBox(),
                     ),
                     Container(

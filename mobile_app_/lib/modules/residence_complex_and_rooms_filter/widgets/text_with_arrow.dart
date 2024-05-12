@@ -3,7 +3,6 @@
 
 
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mobile_app_/repositories/filters/progect_filters.dart';
@@ -11,7 +10,7 @@ import 'package:mobile_app_/arguments/filter_argument.dart';
 
 class TextWithArrow extends StatefulWidget {
 
-  TextWithArrow({super.key, required this.filterRepository, required this.previousFilter});
+  const TextWithArrow({super.key, required this.filterRepository, required this.previousFilter});
 
   final ProjectFilterRepository filterRepository;
   final FilterType previousFilter;

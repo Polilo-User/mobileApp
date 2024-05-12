@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_app_/arguments/filter_argument.dart';
-import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/hard_back_arrow.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/widgets.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/bloc/rest_commun_filt_bloc.dart';
 
@@ -36,12 +35,12 @@ class _RestCommunFilterState extends State<RestCommunFilter> {
     final args = ModalRoute.of(context)?.settings.arguments;
 
     if (args is! Map) {
-      _restCommunFilterBloc.add(LoadRoomFilterEvennt());
+      _restCommunFilterBloc.add(LoadProgectsFilterEvent());
     }
     else {
       final filterType = args['previousFilter'] as FilterType?;
       if (filterType == null) {
-        _restCommunFilterBloc.add(LoadRoomFilterEvennt());
+        _restCommunFilterBloc.add(LoadProgectsFilterEvent());
       }
       else {
         final Map<FilterType, VoidCallback> roomsFilter = {

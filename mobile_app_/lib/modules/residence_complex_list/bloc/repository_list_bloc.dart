@@ -11,20 +11,26 @@ part 'repository_list_event.dart';
 part 'repository_list_state.dart';
 
 
-class RepositoryListBloc extends Bloc<RepositoryListEvent, RepositoryListState> {
+class RepositoryListBloc extends Bloc<RepositoryListEvent, ResidenceComplexState> {
 
 
-    RepositoryListBloc(this.residenceComplexRepository) : super(CryptoListInitial()) {
+    RepositoryListBloc(this.residenceComplexRepository) : super(ResidenceComplexInitial()) {
 
       on<LoadRepositoryList>((event, emit) async {
         try {
 
           final residenceComplexes = await residenceComplexRepository.getFilteredResidenceComplexes();
-          emit(RepositoryListLoaded(complexList: residenceComplexes));
+
+          if (residenceComplexes.isEmpty) {
+            emit(ResidenceComplexListEmpty());
+            return;
+          }
+
+          emit(ResidenceComplexListLoaded(complexList: residenceComplexes));
         }
         catch(e) {
-
-          emit(RepositoryListError());
+          print(e.toString());
+          emit(ResidenceComplexListLoadFailed());
         }
 
 

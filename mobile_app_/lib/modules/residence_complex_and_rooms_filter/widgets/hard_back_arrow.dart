@@ -7,7 +7,7 @@ import 'package:flutter_svg/svg.dart';
 
 class HardBackArrow extends StatefulWidget {
 
-  HardBackArrow( {super.key, this.args = null, this.url = null} );
+  HardBackArrow( {super.key, this.args, this.url} );
 
   Map? args;
   String? url;

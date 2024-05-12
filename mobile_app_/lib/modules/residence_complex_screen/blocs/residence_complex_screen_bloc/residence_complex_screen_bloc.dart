@@ -11,7 +11,5 @@ part 'residence_complex_screen_state.dart';
 
 
 class ResidnceComplexScreenBloc extends Bloc<ResidnceComplexScreenEvent, ResidnceComplexScreenState> {
-  ResidnceComplexScreenBloc() : super(ResidnceComplexScreenInitial()) {
-
-  }
+  ResidnceComplexScreenBloc() : super(ResidnceComplexScreenInitial());
 }

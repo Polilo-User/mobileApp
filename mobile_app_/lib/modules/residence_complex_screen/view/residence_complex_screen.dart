@@ -1,10 +1,8 @@
 
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/hard_back_arrow.dart';
-import 'package:mobile_app_/modules/residence_complex_list/widgets/residence_complex.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/sales_office.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/widgets.dart';
 
@@ -115,7 +113,7 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                       textAlign: TextAlign.center,),
                   ),
                   const SizedBox(width: 5),
-                  Text("От 6 млн", style: thme.textTheme.bodySmall,),
+                  Text("${residenceCpmplex!.lowestPrice.toString()} млн", style: thme.textTheme.bodySmall,),
                 ],
               ),
 
@@ -133,7 +131,7 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Кваритиры", style: thme.textTheme.labelLarge,),
-                        Text("От 6 млн", style: thme.textTheme.bodySmall),
+                        Text("От ${residenceCpmplex!.lowestPrice.toString()} млн", style: thme.textTheme.bodySmall),
                       ],
                     ),
 
@@ -181,7 +179,7 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Сроки сдачи", style: thme.textTheme.bodySmall,),
-                          Text("IV КВ. 2026", style: thme.textTheme.labelLarge),
+                          Text(residenceCpmplex!.leadTime, style: thme.textTheme.labelLarge),
                         ],
                       ),
                       const Expanded(

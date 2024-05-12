@@ -7,7 +7,7 @@ import 'package:flutter_svg/svg.dart';
 
 class SoftBackArrow extends StatefulWidget {
 
-  SoftBackArrow( {super.key, this.args = null, this.url = null} );
+  SoftBackArrow( {super.key, this.args, this.url} );
 
   Map? args;
   String? url;

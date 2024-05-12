@@ -25,7 +25,7 @@ class _ProgectFilterState extends State<ProgectFilter> {
     Column( 
       children: [
         // слайдер стоимости
-        MySlider(lable: "Стоимость", units: "млн ₽", min: 6, max: 13, divisions: 7, valueName: "coast", filterRepository: projectFilterRepository),
+        MySlider(lable: "Стоимость", units: "млн ₽", min: 5, max: 13, divisions: 7, valueName: "coast", filterRepository: projectFilterRepository),
 
         Container(
           margin: const EdgeInsets.only(top: 20, bottom: 20),

@@ -39,7 +39,7 @@ class _RoomsState extends State<Rooms> {
                 Container(
                   child: Text(widget.description, style: thme.textTheme.bodySmall,),
                 ),
-                Expanded(
+                const Expanded(
                   child: SizedBox(),
                 ),
                 Container(

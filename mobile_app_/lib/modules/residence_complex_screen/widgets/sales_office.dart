@@ -8,7 +8,7 @@ import 'package:mobile_app_/modules/residence_complex_screen/widgets/sales_offic
 
 class SalesOffice extends StatefulWidget {
 
-  SalesOffice({super.key, required this.onUpPressed, required this.onDownPressed});
+  const SalesOffice({super.key, required this.onUpPressed, required this.onDownPressed});
 
   final VoidCallback onUpPressed;
   final VoidCallback onDownPressed;
@@ -56,7 +56,7 @@ class _SalesOfficeState extends State<SalesOffice> {
                       margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.06),
                       child: Text("Офис продаж", style: thme.textTheme.bodyMedium,),
                     ),
-                    Expanded(
+                    const Expanded(
                       child: SizedBox(),
                     ),
                     Container(
