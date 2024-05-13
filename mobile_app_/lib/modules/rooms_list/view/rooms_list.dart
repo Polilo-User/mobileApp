@@ -101,8 +101,6 @@ class _RoomsListState extends State<RoomsList> {
                           )
                       );
                     }
-
-
                     return const Center(child: CircularProgressIndicator());
                 })
               )

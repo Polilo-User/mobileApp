@@ -78,7 +78,7 @@ class _RoomScreenState extends State<RoomScreen> {
                   child: IconButton(
                     icon: SvgPicture.asset("assets/svg/favorite.svg", width: 40, height: 40),
                     onPressed: () {
-                      print("кликнули на добавить в избранное");
+                      // TODO: implement favorite
                     },
                   )
                 )

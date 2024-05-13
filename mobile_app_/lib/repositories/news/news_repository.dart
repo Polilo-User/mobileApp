@@ -15,8 +15,8 @@ class NewsRepository {
   // ImgUrl string `json:"imgUrl"`
   Future<List<News>> getNews() async {
     List<News> news = [];
-    var response = await dio.get(
-      'http://185.104.114.7:8095/buildings/getBuildingsByFilter'
+    final response = await dio.get(
+      'http://185.104.114.7:8095/news/getNews'
     );
     final data = response.data as Map<String, dynamic>;
     data['data'].forEach((element) {
