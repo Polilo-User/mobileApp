@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/hard_back_arrow.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/sales_office_child.dart';
+import 'package:mobile_app_/repositories/rooms/room.dart' as model;
+
 
 class RoomScreen extends StatefulWidget {
   const RoomScreen({super.key});
@@ -17,7 +19,17 @@ class RoomScreen extends StatefulWidget {
 class _RoomScreenState extends State<RoomScreen> {
   @override
   Widget build(BuildContext context) {
+    final model.Room? room;
     final thme = Theme.of(context);
+
+    final args = ModalRoute.of(context)?.settings.arguments;
+    if (args is Map) {
+      room = args['room'] as model.Room;
+    } else {
+      throw Exception('Нужно передать квартиру');
+    }
+
+
     return Scaffold(
       body: Column(
         children: [
@@ -81,8 +93,8 @@ class _RoomScreenState extends State<RoomScreen> {
                       children: [
                         Container(
                           padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.01, left: MediaQuery.of(context).size.width * 0.04, right: MediaQuery.of(context).size.width * 0.04),
-                          child: Image.network(
-                            "https://s3-alpha-sig.figma.com/img/d1c7/0d7f/feac6c94a84e5a6fa94b23b483d760ec?Expires=1713139200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=CAPTkwMJOEihInS88VZOY38Iz16jPGW5jVy52Xh~rbnSD7QOHwPCEurgIbvvBSDJJGUlD8XSIGyaGdQfhGY1iLYEDgG3sa~60bkN59rUyEu3HDlhWNoo83FF8YuLoqCdOYYqwPe1ldMN0PTm9fpqmcBgkavzPzqG0WqOmA0fhF~SCsBTl0dXFPgOxBL2hQWDYgHul6RHZFledvw3bBMRnfodzQysrfQ-GjdjmjHkiavI~cgJONC76zggzdg6v7mKGLgCANL9iv5VZJSzLbdub~6uUeSLKD2mAg1Dw22pVU6Api8duvEz6V-JrFhk50xGY2jWqzKnsq61KRpmvr47~w__",
+                          child: Image(
+                            image: const AssetImage("assets/images/rooms_images/one_room.png"),
                             width: MediaQuery.of(context).size.width * 1.0,
                             height: MediaQuery.of(context).size.width * 0.5,
                             fit: BoxFit.cover,
@@ -98,7 +110,7 @@ class _RoomScreenState extends State<RoomScreen> {
                       children: <Widget>[
                       Row(
                         children: <Widget>[
-                          Text("6 000 000 ₽", style: thme.textTheme.titleLarge,),
+                          Text("${room.Price * 1000000} ₽", style: thme.textTheme.titleLarge,),
                           const Expanded(
                             child: SizedBox(),
                           ),
@@ -115,7 +127,7 @@ class _RoomScreenState extends State<RoomScreen> {
                             ),
                             padding: const EdgeInsets.only(left: 13, right: 13, top: 8, bottom: 8),
                             child: Text(
-                              "156 277,94 ₽/м2 ",
+                              "${(room.Price * 1000000 / room.Area).round().toString()} ₽/м2 ",
                               style: thme.textTheme.bodySmall,
                             ),
                           )
@@ -124,7 +136,7 @@ class _RoomScreenState extends State<RoomScreen> {
                       ),
                       Container(
                           margin: const EdgeInsets.only(top: 5),
-                          child: Text("Сити-квартал Октябрьский г.Красноярск", style: thme.textTheme.bodyMedium)
+                          child: Text(room.Name, style: thme.textTheme.bodyMedium)
                       ),
 
                       SalesOfficeChild(icoPath: 'assets/svg/geo-point.svg', text: 'г. Красноярск'),
@@ -148,7 +160,16 @@ class _RoomScreenState extends State<RoomScreen> {
                                 const Expanded(
                                   child: SizedBox(),
                                 ),
-                                Text("4/17", style: thme.textTheme.bodyMedium,)
+                                Text(room.Floor.toString(), style: thme.textTheme.bodyMedium,)
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text("Комнат", style: thme.textTheme.labelSmall,),
+                                const Expanded(
+                                  child: SizedBox(),
+                                ),
+                                Text(room.CountOfRooms.toString(), style: thme.textTheme.bodyMedium,)
                               ],
                             ),
                             Row(

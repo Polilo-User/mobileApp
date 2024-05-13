@@ -82,7 +82,7 @@ class _RoomState extends State<Room> {
                           padding: const EdgeInsets.only(left: 13, right: 13, top: 8, bottom: 8),
                           margin: const EdgeInsets.only(right: 15),
                           child: Text(
-                            "${( widget.room.Price * 1000000 / widget.room.Area).round().toString()} ₽/м2 ",
+                            "${(widget.room.Price * 1000000 / widget.room.Area).round().toString()} ₽/м2 ",
                             style: thme.textTheme.bodySmall,
                           ),
                         )

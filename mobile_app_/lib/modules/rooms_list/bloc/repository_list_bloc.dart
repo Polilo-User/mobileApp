@@ -30,7 +30,11 @@ class RepositoryListBloc extends Bloc<RepositoryListEvent, RoomsState> {
         if (! await CheckInternetConnection.internet()) {
           emit(RoomsListLoadFailed());
         }
-        final rooms = await roomRepository.getFilteredRooms(); // await roomRepository.getFilteredResidenceComplexes();
+        final rooms = await roomRepository.getFilteredRooms();
+        if (rooms.length == 0) {
+          emit(RoomsListEmpty());
+          return;
+        }
         emit(RoomsListLoaded(roomsList: rooms));
       }
       catch(e) {

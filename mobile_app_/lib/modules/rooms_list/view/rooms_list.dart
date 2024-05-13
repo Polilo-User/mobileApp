@@ -54,7 +54,7 @@ class _RoomsListState extends State<RoomsList> {
                 child: BlocBuilder<RepositoryListBloc, RoomsState>(
                   bloc: _repositoryListBloc,
                   builder: (context, state) {
-
+                    print(state.toString());
                     // если загрузка прошла успешно
                     if (state is RoomsListLoaded) {
                       return ListView.builder(
