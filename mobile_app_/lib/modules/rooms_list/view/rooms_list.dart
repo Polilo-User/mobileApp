@@ -4,7 +4,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/widgets.dart';
-import 'package:mobile_app_/modules/residence_complex_screen/widgets/rooms.dart';
 import 'package:mobile_app_/modules/rooms_list/widgets/widgets.dart';
 
 import 'package:mobile_app_/arguments/filter_argument.dart';
@@ -54,7 +53,7 @@ class _RoomsListState extends State<RoomsList> {
                 child: BlocBuilder<RepositoryListBloc, RoomsState>(
                   bloc: _repositoryListBloc,
                   builder: (context, state) {
-                    print(state.toString());
+
                     // если загрузка прошла успешно
                     if (state is RoomsListLoaded) {
                       return ListView.builder(
@@ -78,14 +77,28 @@ class _RoomsListState extends State<RoomsList> {
                           margin: EdgeInsets.only(
                               top: MediaQuery.of(context).size.height * 0.3,
                               left: MediaQuery.of(context).size.width * 0.1),
-                          child: Text("Не найдено подходящих проектов под параметры фильтра")
+                          child: const Text("Не найдено подходящих проектов под параметры фильтра")
                       );
                     }
 
                     // если ошибка
                     if (state is RoomsListLoadFailed) {
                       return Container(
-                        child: Text("Не удалось загрузить данные")
+                          margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3),
+                          child: Column(
+                            children: [
+                              const Center(child: Text("Не удалось загрузить данные")),
+                              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                              ElevatedButton(
+                                onPressed: () { _repositoryListBloc.add(LoadRepositoryList()); },
+                                child: const Text("Повторить попытку", style: TextStyle(color: Colors.white)),
+                                style: ButtonStyle(
+                                    backgroundColor: MaterialStateProperty.all(
+                                        const Color.fromRGBO(35, 79, 104, 1)
+                                    )),
+                              )
+                            ],
+                          )
                       );
                     }
 

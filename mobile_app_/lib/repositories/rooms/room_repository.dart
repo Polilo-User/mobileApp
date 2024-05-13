@@ -22,11 +22,41 @@ class RoomRepository extends AbstractRoomRepository {
   RoomRepository({required this.dio});
 
 
+  static Map<int, String> toRimNumbers = {
+    1: "I",
+    2: "II",
+    3: "III",
+    4: "IV"
+  };
 
+  // Квартал сдачи квартиры
+  Future<String> getRoomQuarter(final build_id) async {
+    var response = await dio.post(
+      'http://185.104.114.7:8095/buildings/getBuildingsByFilter',
+      data: json.encode(
+      {
+        "filters": {
+          "priceFrom": 1,
+          "priceTo": 13,
+        }
+      }),
+      options: Options(
+        headers: {'Content-Type': 'application/json'},
+      ),
+    );
 
-  // Area         int64 `json:"area"`
-  // CountOfRooms int64 `json:"rooms"`
-  // Floor        int64 `json:"floor"`
+    var result = "2025 IV Квартал";
+    final data = response.data as Map<String, dynamic>;
+    data['data'].forEach((element) {
+      final id = element['id'] as int;
+      final year = element['year'] as String;
+      final quarter = element['cvartal'] as String;
+      if (id == build_id) {
+        result = "${year} ${toRimNumbers[int.parse(quarter)]} Квартал";
+      }
+    });
+    return result;
+  }
 
   Future<List<Room>> getFilteredRooms() async {
 

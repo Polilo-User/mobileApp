@@ -14,7 +14,7 @@ final routes = {
   '/rest-commun-filter': (context) => const RestCommunFilter(),
   '/residence-complex-screen': (context) => const ResidenceComplexScreen(),
   '/rooms-list': (context) =>  const RoomsList(),
-  '/room-screen': (context) => const RoomScreen(),
+  '/room-screen': (context) =>  const RoomScreen(),
   '/lead-time': (context) => const LeadTime(),
 };
 

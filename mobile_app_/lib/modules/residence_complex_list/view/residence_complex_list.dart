@@ -55,12 +55,12 @@ class _ResidenceComplexListState extends State<ResidenceComplexList> {
                       itemBuilder: (context, i) {
                         return ListTile(
                           title: InkWell(
-                              onTap: () {
-                                Navigator.of(context).pushNamed("/residence-complex-screen", arguments: { 'residenceComplex' : state.complexList[i] } );
-                              },
-                              child: widgets.ResidenceComplex(
-                                  complex: state.complexList[i]
-                              )
+                            onTap: () {
+                              Navigator.of(context).pushNamed("/residence-complex-screen", arguments: { 'residenceComplex' : state.complexList[i] } );
+                            },
+                            child: widgets.ResidenceComplex(
+                                complex: state.complexList[i]
+                            )
                           )
                         );
                       }
@@ -94,7 +94,7 @@ class _ResidenceComplexListState extends State<ResidenceComplexList> {
                       margin: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height * 0.3,
                         left: MediaQuery.of(context).size.width * 0.1),
-                      child: Text("Не найдено подходящих проектов под параметры фильтра")
+                      child: const Text("Не найдено подходящих проектов под параметры фильтра")
                     );
                   }
 

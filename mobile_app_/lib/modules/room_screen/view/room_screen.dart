@@ -4,9 +4,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/hard_back_arrow.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/sales_office_child.dart';
 import 'package:mobile_app_/repositories/rooms/room.dart' as model;
+
+import '../../../repositories/rooms/room_repository.dart';
 
 
 class RoomScreen extends StatefulWidget {
@@ -17,18 +20,35 @@ class RoomScreen extends StatefulWidget {
 }
 
 class _RoomScreenState extends State<RoomScreen> {
+
+
+  late final model.Room? room;
+  final RoomRepository roomRepository = GetIt.I<RoomRepository>();
+  late String? quarter = "";
+  // quarter = roomRepository.getRoomQuarter(room!.Id);
+
+  Future<String> getQuarter() async {
+    final result = await roomRepository.getRoomQuarter(room!.Id);
+    return result;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final model.Room? room;
-    final thme = Theme.of(context);
 
     final args = ModalRoute.of(context)?.settings.arguments;
+
     if (args is Map) {
       room = args['room'] as model.Room;
     } else {
       throw Exception('Нужно передать квартиру');
     }
 
+    final thme = Theme.of(context);
 
     return Scaffold(
       body: Column(
@@ -110,7 +130,7 @@ class _RoomScreenState extends State<RoomScreen> {
                       children: <Widget>[
                       Row(
                         children: <Widget>[
-                          Text("${room.Price * 1000000} ₽", style: thme.textTheme.titleLarge,),
+                          Text("${room!.Price * 1000000} ₽", style: thme.textTheme.titleLarge,),
                           const Expanded(
                             child: SizedBox(),
                           ),
@@ -127,7 +147,7 @@ class _RoomScreenState extends State<RoomScreen> {
                             ),
                             padding: const EdgeInsets.only(left: 13, right: 13, top: 8, bottom: 8),
                             child: Text(
-                              "${(room.Price * 1000000 / room.Area).round().toString()} ₽/м2 ",
+                              "${(room!.Price * 1000000 / room!.Area).round().toString()} ₽/м2 ",
                               style: thme.textTheme.bodySmall,
                             ),
                           )
@@ -136,7 +156,7 @@ class _RoomScreenState extends State<RoomScreen> {
                       ),
                       Container(
                           margin: const EdgeInsets.only(top: 5),
-                          child: Text(room.Name, style: thme.textTheme.bodyMedium)
+                          child: Text(room!.Name, style: thme.textTheme.bodyMedium)
                       ),
 
                       SalesOfficeChild(icoPath: 'assets/svg/geo-point.svg', text: 'г. Красноярск'),
@@ -160,7 +180,7 @@ class _RoomScreenState extends State<RoomScreen> {
                                 const Expanded(
                                   child: SizedBox(),
                                 ),
-                                Text(room.Floor.toString(), style: thme.textTheme.bodyMedium,)
+                                Text(room!.Floor.toString(), style: thme.textTheme.bodyMedium,)
                               ],
                             ),
                             Row(
@@ -169,7 +189,7 @@ class _RoomScreenState extends State<RoomScreen> {
                                 const Expanded(
                                   child: SizedBox(),
                                 ),
-                                Text(room.CountOfRooms.toString(), style: thme.textTheme.bodyMedium,)
+                                Text(room!.CountOfRooms.toString(), style: thme.textTheme.bodyMedium,)
                               ],
                             ),
                             Row(
@@ -178,7 +198,17 @@ class _RoomScreenState extends State<RoomScreen> {
                                 const Expanded(
                                   child: SizedBox(),
                                 ),
-                                Text("IV кв 2025", style: thme.textTheme.bodyMedium,)
+                                FutureBuilder(
+                                  future: getQuarter(),
+                                  builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                                    if (snapshot.hasData) {
+                                      quarter = snapshot.data;
+                                      return Text(quarter!, style: thme.textTheme.bodyMedium,);
+                                    } else {
+                                      return const CircularProgressIndicator();
+                                    }
+                                  }
+                                )
                               ],
                             )
                           ],
