@@ -15,13 +15,15 @@ import 'package:mobile_app_/repositories/residence_complex/residence_complex_rep
 import 'package:mobile_app_/repositories/news/news_repository.dart';
 
 
-
 void main() {
 
   // Фильтры
 
     // фильтр помещений
     GetIt.I.registerLazySingleton<RoomFilterRepository>(() => (RoomFilterRepository()));
+
+    // фильтр помещений с учетом id проекта
+    GetIt.I.registerLazySingleton<RoomListFromResidenceComplexFilter>(() => (RoomListFromResidenceComplexFilter()));
 
     // фильтр проектов
     GetIt.I.registerLazySingleton<ProjectFilterRepository>(() => (ProjectFilterRepository()));
