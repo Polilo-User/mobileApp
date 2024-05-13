@@ -11,12 +11,15 @@ import 'package:get_it/get_it.dart';
 import 'package:mobile_app_/repositories/filters/filter.dart';
 import 'package:mobile_app_/repositories/rooms/room.dart';
 
+
 import 'dart:convert';
 
 
 class RoomRepository extends AbstractRoomRepository {
 
-  final RoomFilterRepository filter = GetIt.I<RoomFilterRepository>();
+  final RoomFilterRepository standartRoomFilter = GetIt.I<RoomFilterRepository>();
+  final RoomListFromResidenceComplexFilter withResidenceComplexFilter  = GetIt.I<RoomListFromResidenceComplexFilter>();
+
   Dio dio;
 
   RoomRepository({required this.dio});
@@ -58,17 +61,40 @@ class RoomRepository extends AbstractRoomRepository {
     return result;
   }
 
-  Future<List<Room>> getFilteredRooms() async {
+  Future<List<Room>> getFilteredRooms({ bool isFilterWithResidenceComplex = false, int? buildId = null }) async {
+
+    late final filter;
+    late final jsonFilter;
+
+    if (isFilterWithResidenceComplex) {
+      if (buildId == null) {
+        throw Exception("нужно передать id проекта при таком виде фильтрации");
+      }
+      // если фильтрация с проектом
+      filter = withResidenceComplexFilter;
+      jsonFilter =
+      {
+        "filters": {
+          "priceFrom": filter.valueMap['coast']!.start.toInt(),
+          "priceTo": filter.valueMap['coast']!.end.toInt(),
+          "building_id": buildId
+        }
+      };
+    } else {
+      // если обычная фильтрация
+      filter = standartRoomFilter;
+      jsonFilter =
+      {
+        "filters": {
+          "priceFrom": filter.valueMap['coast']!.start.toInt(),
+          "priceTo": filter.valueMap['coast']!.end.toInt(),
+        }
+      };
+    }
 
     var response = await dio.post(
       'http://185.104.114.7:8095/apartaments/getApartByFilter',
-      data: json.encode(
-          {
-            "filters": {
-              "priceFrom": filter.valueMap['coast']!.start.toInt(),
-              "priceTo": filter.valueMap['coast']!.end.toInt(),
-            }
-          }),
+      data: json.encode(jsonFilter),
       options: Options(
         headers: {'Content-Type': 'application/json'},
       ),

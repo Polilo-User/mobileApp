@@ -20,10 +20,10 @@ void main() {
   // Фильтры
 
     // фильтр помещений
-    GetIt.I.registerLazySingleton<RoomFilterRepository>(() => (RoomFilterRepository()));
+    GetIt.I.registerSingleton<RoomFilterRepository>((RoomFilterRepository()));
 
     // фильтр помещений с учетом id проекта
-    GetIt.I.registerLazySingleton<RoomListFromResidenceComplexFilter>(() => (RoomListFromResidenceComplexFilter()));
+    GetIt.I.registerSingleton<RoomListFromResidenceComplexFilter>((RoomListFromResidenceComplexFilter()));
 
     // фильтр проектов
     GetIt.I.registerLazySingleton<ProjectFilterRepository>(() => (ProjectFilterRepository()));

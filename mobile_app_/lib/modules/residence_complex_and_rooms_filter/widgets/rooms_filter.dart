@@ -43,22 +43,22 @@ class _RoomsFilterState extends State<RoomsFilter> {
         Row(
           children: [
             // Студия ?
-            RoomAskStud(roomName: "Студия", id: 0),
+            RoomAskStud(roomName: "Студия", id: 0, filterRepository: roomFilterRepository,),
 
             // 1 ?
-            RoomAsk(roomName: "1", id: 1),
+            RoomAsk(roomName: "1", id: 1, filterRepository: roomFilterRepository,),
 
             // 2 ?
-            RoomAsk(roomName: "2", id: 2,),
+            RoomAsk(roomName: "2", id: 2, filterRepository: roomFilterRepository,),
 
             // 3 ?
-            RoomAsk(roomName: "3", id: 3),
+            RoomAsk(roomName: "3", id: 3, filterRepository: roomFilterRepository,),
 
             // 4 ?
-            RoomAsk(roomName: "4", id: 4),
+            RoomAsk(roomName: "4", id: 4, filterRepository: roomFilterRepository,),
 
             // 5 ?
-            RoomAsk(roomName: "5+", id: 5)
+            RoomAsk(roomName: "5+", id: 5, filterRepository: roomFilterRepository,)
           ]
         ),
         // Слайдеры стоимости площади и этажа 
@@ -73,7 +73,6 @@ class _RoomsFilterState extends State<RoomsFilter> {
 
             // слайдер Этажей
             MySlider(lable: "Этаж", units: "", min: 2, max: 16, divisions: 14, valueName: "floor", filterRepository: roomFilterRepository),
-
 
           ]
         ),
@@ -93,4 +92,4 @@ class _RoomsFilterState extends State<RoomsFilter> {
   }
 }
 
-// Этот код просто ужас программиста, но я его пока понимаю.
+// Этот код просто ночной кошмар программиста, но я его пока понимаю.

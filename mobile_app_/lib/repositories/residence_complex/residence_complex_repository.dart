@@ -33,7 +33,7 @@ class ResidenceComplexRepository {
     3: "III",
     4: "IV"
   };
-  
+
   // "Неважно", "III КВ. 2024", "IV КВ. 2024", "III КВ. 2025", "IV КВ. 2025", "IV КВ. 2026"
   Future<Map<String, dynamic>> getFilterOptions(String leadTime) async {
 
@@ -77,11 +77,13 @@ class ResidenceComplexRepository {
     final data = response.data as Map<String, dynamic>;
 
     data['data'].forEach((element) {
+      final id = element['id'] as int;
       final name = element['name'] as String;
       final imgUrl = element['imgUrl'] as String;
       final lowestPrice = element['price'] as int;
       final filterLeadTime = element['year'] + " " + toRimNumbers[int.parse(element['cvartal'])];//  +  as String;
       residenceComplexData.add(ResidenceComplex(
+          id: id,
           name: name,
           imgUrl: imgUrl,
           lowestPrice: lowestPrice,

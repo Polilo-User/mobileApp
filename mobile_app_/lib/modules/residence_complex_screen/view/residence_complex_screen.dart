@@ -2,11 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/hard_back_arrow.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/sales_office.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/widgets.dart';
 
 import 'package:mobile_app_/repositories/residence_complex/redince_complex.dart' as models;
+
+import '../../../repositories/filters/room_list_from_residence_complex_filter.dart';
 
 
 class ResidenceComplexScreen extends StatefulWidget {
@@ -269,9 +272,11 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                           top: MediaQuery.of(context).size.width * 0.08,
                           bottom: MediaQuery.of(context).size.width * 0.08
                       ),
+                      // TODO доделать фильтрацию с учетом ЖК комплекса
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed("/room-list-from-residence-complex");
+                          GetIt.I<RoomListFromResidenceComplexFilter>().reset();
+                          Navigator.of(context).pushNamed("/room-list-from-residence-complex-filter", arguments: { 'residenceComplex' : residenceCpmplex } );
                         },
                         child: const Text('Все квартиры в этом ЖК', style: TextStyle(color: Colors.white, fontFamily: "Montserrat")), // Текст кнопки
                       )

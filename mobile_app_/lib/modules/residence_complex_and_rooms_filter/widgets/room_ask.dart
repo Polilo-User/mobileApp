@@ -7,10 +7,15 @@ import 'package:mobile_app_/repositories/filters/room_filter_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../../repositories/filters/filter_repository.dart';
+
 // ignore: must_be_immutable
 class RoomAsk extends StatefulWidget {
   
-  RoomAsk({super.key, required this.roomName, required this.id});
+  RoomAsk({super.key, required this.roomName, required this.id, required this.filterRepository});
+
+  FilterRepository filterRepository ;
+
 
   int id;
 
@@ -22,7 +27,6 @@ class RoomAsk extends StatefulWidget {
 
 class _RoomAskState extends State<RoomAsk> {
 
-  final RoomFilterRepository roomFilterRepository = GetIt.I<RoomFilterRepository>();
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +37,11 @@ class _RoomAskState extends State<RoomAsk> {
               TextButton(
                 onPressed: () {
                   setState(() {
-                    roomFilterRepository.rooms[widget.id] = !roomFilterRepository.rooms[widget.id];
+                    widget.filterRepository.rooms[widget.id] = !widget.filterRepository.rooms[widget.id];
                   });
                 },
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all( roomFilterRepository.rooms[widget.id] ? const Color.fromRGBO(35, 79, 104, 1) : const Color.fromARGB(111, 100, 125, 161)),
+                  backgroundColor: MaterialStateProperty.all( widget.filterRepository.rooms[widget.id] ? const Color.fromRGBO(35, 79, 104, 1) : const Color.fromARGB(111, 100, 125, 161)),
                   shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12.0), // Указание скругления
@@ -53,7 +57,9 @@ class _RoomAskState extends State<RoomAsk> {
 
 // ignore: must_be_immutable
 class RoomAskStud extends StatefulWidget {
-  RoomAskStud({super.key, required this.roomName, required this.id});
+  RoomAskStud({super.key, required this.roomName, required this.id, required this.filterRepository});
+
+  FilterRepository filterRepository ;
 
   int id;
 
@@ -65,19 +71,17 @@ class RoomAskStud extends StatefulWidget {
 
 class _RoomAskStudState extends State<RoomAskStud> {
 
-  final RoomFilterRepository roomFilterRepository = GetIt.I<RoomFilterRepository>();
-
   @override
   Widget build(BuildContext context) {
     return 
      TextButton(
         onPressed: () {
           setState(() {
-            roomFilterRepository.rooms[widget.id] = !roomFilterRepository.rooms[widget.id];
+            widget.filterRepository.rooms[widget.id] = !widget.filterRepository.rooms[widget.id];
           });
         },
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all( roomFilterRepository.rooms[widget.id] ? const Color.fromRGBO(35, 79, 104, 1) : const Color.fromARGB(111, 100, 125, 161)),
+          backgroundColor: MaterialStateProperty.all( widget.filterRepository.rooms[widget.id] ? const Color.fromRGBO(35, 79, 104, 1) : const Color.fromARGB(111, 100, 125, 161)),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12.0), // Указание скругления
