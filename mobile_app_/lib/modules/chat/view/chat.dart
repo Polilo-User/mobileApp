@@ -12,8 +12,9 @@ class Chat extends StatefulWidget {
 class _ChatState extends State<Chat> {
   @override
   Widget build(BuildContext context) {
+    final thm = Theme.of(context);
     return Container(
-      child: const Text("Чат"),
+      child: Text("В MVP чата не будет 🙈 ", style: thm.textTheme.titleLarge,),
     );
   }
 }
