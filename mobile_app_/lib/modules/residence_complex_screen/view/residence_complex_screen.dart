@@ -232,6 +232,7 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                           child:
                           InkWell(
                           onTap: () {
+                            // TODO доделать ЖК
                             print("все строения");
                           },
                           child:
@@ -270,7 +271,7 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                       ),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed("/rooms-list");
+                          Navigator.of(context).pushNamed("/room-list-from-residence-complex");
                         },
                         child: const Text('Все квартиры в этом ЖК', style: TextStyle(color: Colors.white, fontFamily: "Montserrat")), // Текст кнопки
                       )
