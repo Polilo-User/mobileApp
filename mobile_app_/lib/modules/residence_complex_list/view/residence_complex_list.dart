@@ -40,10 +40,10 @@ class _ResidenceComplexListState extends State<ResidenceComplexList> {
           ],
         ),
         Expanded(
-
-
             child:RefreshIndicator(
-              onRefresh: () async { _repositoryListBloc.add(LoadRepositoryList()); },
+              onRefresh: () async {
+                _repositoryListBloc.add(LoadRepositoryList());
+              },
               child: BlocBuilder<RepositoryListBloc, ResidenceComplexState>(
               bloc: _repositoryListBloc,
               builder: (context, state) {
@@ -98,10 +98,7 @@ class _ResidenceComplexListState extends State<ResidenceComplexList> {
                     );
                   }
 
-
-
-                return const Center(child: CircularProgressIndicator());
-
+                  return const Center(child: CircularProgressIndicator());
               }
             )
           )

@@ -2,12 +2,14 @@
 
 
 
-
+import 'package:mobile_app_/repositories/rooms/room.dart' as model;
 import 'package:flutter/material.dart';
 
 
 class Room extends StatefulWidget {
-  const Room({super.key});
+
+  Room({super.key, required this.room});
+  model.Room room;
 
   @override
   State<Room> createState() => _RoomState();
@@ -62,7 +64,7 @@ class _RoomState extends State<Room> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Text("6 000 000 ₽", style: thme.textTheme.titleLarge,),
+                        Text("${ (widget.room.Price * 1000000).toString()} ₽", style: thme.textTheme.titleLarge,),
                         const Expanded(
                           child: SizedBox(),
                         ),
@@ -80,7 +82,7 @@ class _RoomState extends State<Room> {
                           padding: const EdgeInsets.only(left: 13, right: 13, top: 8, bottom: 8),
                           margin: const EdgeInsets.only(right: 15),
                           child: Text(
-                            "156 277,94 ₽/м2 ",
+                            "${( widget.room.Price * 1000000 / widget.room.Area).round().toString()} ₽/м2 ",
                             style: thme.textTheme.bodySmall,
                           ),
                         )
@@ -88,7 +90,7 @@ class _RoomState extends State<Room> {
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 5),
-                      child: Text("Сити-квартал Октябрьский г.Красноярск", style: thme.textTheme.bodyLarge,)
+                      child: Text(widget.room.Name, style: thme.textTheme.bodyLarge,)
                     )
                   ]
               )

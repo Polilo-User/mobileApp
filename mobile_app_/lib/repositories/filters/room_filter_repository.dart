@@ -9,7 +9,7 @@ class RoomFilterRepository extends FilterRepository {
 
 
   // Количество комнат
-  List<bool> rooms = [false, false, false, false, false, false];
+  List<bool> rooms = [true, true, true, true, true, true];
 
   // Слайдеры
   @override
