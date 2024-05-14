@@ -9,6 +9,8 @@ import 'package:get_it/get_it.dart';
 import '../../../repositories/chat_repository/chat_repository.dart';
 import '../../../repositories/chat_repository/models/message.dart';
 
+import '../widgets/message.dart' as view;
+
 class Chat extends StatefulWidget {
   const Chat({ Key? key }) : super(key: key);
 
@@ -35,79 +37,10 @@ class _ChatState extends State<Chat> {
                     itemCount: chatRepository.messages.length,
                     itemBuilder: (context, index) { // Text(chatRepository.messages[index].text)
                       if (chatRepository.messages[index].User == "User") {
-                        return Row(
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.only(
-                                top: 5,
-                                bottom: 5,
-                                left: 15,
-                                right: 15,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Color.fromRGBO(124, 173, 201, 1.0),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              margin: EdgeInsets.only(
-                                left: MediaQuery.of(context).size.width * 0.05,
-                                top: MediaQuery.of(context).size.height * 0.01
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text("${chatRepository.messages[index].User}:", style: const TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 20,
-                                    color: Color.fromRGBO(255, 255, 255, 1.0),
-                                  )),
-                                  Text(chatRepository.messages[index].text, style: const TextStyle(
-                                    fontFamily: "Montserrat",
-                                    fontSize: 20,
-                                    color: Color.fromRGBO(245, 245, 245, 1.0),
-                                  )),
-                                ]
-                              )
-                            ),
-                          ],
-                        );
-
+                        return view.MessageUI(mess: chatRepository.messages[index], background: const Color.fromRGBO(124, 173, 201, 1.0));
                       }
-                      return Row(
-                        children: [
-                          Container(
-                              padding: const EdgeInsets.only(
-                                top: 5,
-                                bottom: 5,
-                                left: 15,
-                                right: 15,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Color.fromRGBO(124, 201, 137, 1.0),
-                                borderRadius: BorderRadius.circular(10.0),
-                              ),
-                              margin: EdgeInsets.only(
-                                  left: MediaQuery.of(context).size.width * 0.05,
-                                  top: MediaQuery.of(context).size.height * 0.01
-                              ),
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text("${chatRepository.messages[index].User}:", style: const TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontSize: 20,
-                                      color: Color.fromRGBO(255, 255, 255, 1.0),
-                                    )),
-                                    Text(chatRepository.messages[index].text, style: const TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontSize: 20,
-                                      color: Color.fromRGBO(245, 245, 245, 1.0),
-                                    )),
-                                  ]
-                              )
-                          ),
-                        ],
-                      );
-                    },
+                        return view.MessageUI(mess: chatRepository.messages[index], background: const Color.fromRGBO(124, 201, 137, 1.0));
+                      },
                   )
                 )
               )
@@ -118,7 +51,8 @@ class _ChatState extends State<Chat> {
                 margin: EdgeInsets.only(
                     left: MediaQuery.of(context).size.width * 0.01,
                     right: MediaQuery.of(context).size.width * 0.01,
-                    bottom: MediaQuery.of(context).size.height * 0.02
+                    bottom: MediaQuery.of(context).size.height * 0.02,
+                    top: MediaQuery.of(context).size.height * 0.01
                 ),
                 child:
                   Row(
