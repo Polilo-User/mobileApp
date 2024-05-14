@@ -4,7 +4,7 @@
 import 'package:flutter/material.dart';
 import 'filter_repository.dart';
 
-class ProjectFilterRepository extends FilterRepository {
+class ProjectFilterRepository extends IFilterRepository {
 
   ProjectFilterRepository();
 

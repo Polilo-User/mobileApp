@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'filter_repository.dart';
 import 'room_filter_repository.dart';
 
-class RoomListFromResidenceComplexFilter extends FilterRepository {
+class RoomListFromResidenceComplexFilter extends IFilterRepository {
 
   // Количество комнат
   List<bool> rooms = [true, true, true, true, true, true];

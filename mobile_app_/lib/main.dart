@@ -3,6 +3,8 @@
 
 
 
+import 'package:mobile_app_/repositories/chat_repository/chat_repository.dart';
+
 import 'app.dart';
 
 import 'package:dio/dio.dart';
@@ -38,6 +40,11 @@ void main() {
 
     // репозиторий новостей
     GetIt.I.registerLazySingleton<NewsRepository>(() => (NewsRepository(dio:Dio())));
+
+    // репозиторий чата
+    GetIt.I.registerLazySingleton<ChatRepository>(() => (ChatRepository()));
+
+    // репозиторий пользователя
 
   runApp(const MobileApp());
 }

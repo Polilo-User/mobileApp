@@ -26,7 +26,7 @@ class MySlider extends StatefulWidget {
 
   int divisions;
   String valueName;
-  final FilterRepository filterRepository;
+  final IFilterRepository filterRepository;
 
   @override
   State<MySlider> createState() => _MySliderState();

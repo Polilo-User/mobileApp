@@ -14,16 +14,33 @@ final whiteTheme = ThemeData(
     ),
 
     textTheme: const TextTheme(
-      bodySmall: TextStyle(
+
+      displayMedium: TextStyle(
+        fontFamily: "Montserrat",
+        fontSize: 16,
+        color: Color.fromRGBO(51, 51, 51, 1.0),
+      ),
+
+        displayLarge: TextStyle(
+          fontFamily: "Montserrat",
+          fontSize: 20,
+          color: Color.fromRGBO(51, 51, 51, 1.0),
+        ),
+
+
+        bodySmall: TextStyle(
         fontFamily: "Montserrat",
         fontSize: 14.25,
       ),
+
       bodyMedium: TextStyle(
           fontFamily: "Montserrat", fontSize: 17),
+
       labelSmall: TextStyle(
         color: Color.fromRGBO(110, 110, 110, 0.478),
         fontSize: 17,
       ),
+
       labelLarge: TextStyle(
         fontFamily: "Montserrat", fontSize: 15
       )

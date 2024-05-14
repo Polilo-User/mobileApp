@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'filter_repository.dart';
 // запомним в оперативной памяти фильтр помещений
-class RoomFilterRepository extends FilterRepository {
+class RoomFilterRepository extends IFilterRepository {
 
   RoomFilterRepository();
 

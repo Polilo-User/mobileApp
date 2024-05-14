@@ -182,7 +182,7 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Сроки сдачи", style: thme.textTheme.bodySmall,),
-                          Text(residenceCpmplex!.leadTime, style: thme.textTheme.labelLarge),
+                          Text(residenceCpmplex!.leadTime, style: thme.textTheme.displayLarge),
                         ],
                       ),
                       const Expanded(

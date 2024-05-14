@@ -14,7 +14,7 @@ class RoomAsk extends StatefulWidget {
   
   RoomAsk({super.key, required this.roomName, required this.id, required this.filterRepository});
 
-  FilterRepository filterRepository ;
+  IFilterRepository filterRepository ;
 
 
   int id;
@@ -59,7 +59,7 @@ class _RoomAskState extends State<RoomAsk> {
 class RoomAskStud extends StatefulWidget {
   RoomAskStud({super.key, required this.roomName, required this.id, required this.filterRepository});
 
-  FilterRepository filterRepository ;
+  IFilterRepository filterRepository ;
 
   int id;
 
