@@ -49,7 +49,7 @@ class _ChatState extends State<Chat> {
           bottomNavigationBar:
               Container(
                 margin: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.width * 0.01,
+                    left: MediaQuery.of(context).size.width * 0.04,
                     right: MediaQuery.of(context).size.width * 0.01,
                     bottom: MediaQuery.of(context).size.height * 0.02,
                     top: MediaQuery.of(context).size.height * 0.01
@@ -61,14 +61,13 @@ class _ChatState extends State<Chat> {
                         TextField(
                             controller: messContoller,
                             decoration: InputDecoration(
-
                               border:  OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
                               hintText: " Сообщение",
                             ),
                             style: thm.textTheme.displayMedium,
-                            maxLines: 5,
+                            maxLines: 4,
                             minLines: 1
                           )
                         ),

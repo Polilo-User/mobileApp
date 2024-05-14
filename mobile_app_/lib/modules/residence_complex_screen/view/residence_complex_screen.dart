@@ -203,9 +203,7 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                   )
               ),
 
-              // квартиры фильтр в mvp не будет 😎
               Container(
-
                 margin: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.04),
                 child: Column(
                   children: [
@@ -235,7 +233,6 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                           child:
                           InkWell(
                           onTap: () {
-                            // TODO доделать ЖК
                             print("все строения");
                           },
                           child:
@@ -272,7 +269,6 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                           top: MediaQuery.of(context).size.width * 0.08,
                           bottom: MediaQuery.of(context).size.width * 0.08
                       ),
-                      // TODO доделать фильтрацию с учетом ЖК комплекса
                       child: ElevatedButton(
                         onPressed: () {
                           GetIt.I<RoomListFromResidenceComplexFilter>().reset();
