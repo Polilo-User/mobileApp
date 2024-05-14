@@ -4,16 +4,13 @@
 
 
 
-import 'dart:io';
 
 import 'package:mobile_app_/repositories/rooms/room_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 
 import '../../../repositories/rooms/models/room.dart';
-
 import 'package:mobile_app_/utils/check_internet_connection.dart';
-
 
 part 'repository_list_event.dart';
 part 'repository_list_state.dart';
@@ -22,7 +19,6 @@ part 'repository_list_state.dart';
 class RepositoryListBloc extends Bloc<RepositoryListEvent, RoomsState> {
 
   final RoomRepository roomRepository;
-
   RepositoryListBloc(this.roomRepository) : super(RoomsInitial()) {
 
     on<LoadRepositoryList>((event, emit) async {
@@ -49,7 +45,6 @@ class RepositoryListBloc extends Bloc<RepositoryListEvent, RoomsState> {
       }
     });
 
-
     on<LoadRepositoryListWithComplex>((event, emit) async { // LoadRepositoryListWithComplex
       try {
         if (! await CheckInternetConnection.internet()) {
@@ -73,7 +68,5 @@ class RepositoryListBloc extends Bloc<RepositoryListEvent, RoomsState> {
         }
       }
     });
-
   }
-
 }

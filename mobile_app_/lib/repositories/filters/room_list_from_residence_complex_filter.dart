@@ -4,7 +4,6 @@
 
 import 'package:flutter/material.dart';
 import 'filter_repository.dart';
-import 'room_filter_repository.dart';
 
 class RoomListFromResidenceComplexFilter extends IFilterRepository {
 
@@ -35,7 +34,6 @@ class RoomListFromResidenceComplexFilter extends IFilterRepository {
 
   @override
   String GetValues() {
-    // TODO: implement GetValues
     throw UnimplementedError();
   }
 }

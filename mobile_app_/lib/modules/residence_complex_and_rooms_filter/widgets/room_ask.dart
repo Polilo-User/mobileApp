@@ -3,31 +3,20 @@
 
 
 
-import 'package:mobile_app_/repositories/filters/room_filter_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-
 import '../../../repositories/filters/filter_repository.dart';
 
 // ignore: must_be_immutable
 class RoomAsk extends StatefulWidget {
-  
   RoomAsk({super.key, required this.roomName, required this.id, required this.filterRepository});
-
   IFilterRepository filterRepository ;
-
-
   int id;
-
   String roomName;
-
   @override
   State<RoomAsk> createState() => _RoomAskState();
 }
 
 class _RoomAskState extends State<RoomAsk> {
-
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -58,19 +47,14 @@ class _RoomAskState extends State<RoomAsk> {
 // ignore: must_be_immutable
 class RoomAskStud extends StatefulWidget {
   RoomAskStud({super.key, required this.roomName, required this.id, required this.filterRepository});
-
   IFilterRepository filterRepository ;
-
   int id;
-
   String roomName;
-
   @override
   State<RoomAskStud> createState() => _RoomAskStudState();
 }
 
 class _RoomAskStudState extends State<RoomAskStud> {
-
   @override
   Widget build(BuildContext context) {
     return 
