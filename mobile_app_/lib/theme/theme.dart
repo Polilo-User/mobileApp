@@ -15,6 +15,7 @@ final whiteTheme = ThemeData(
 
     textTheme: const TextTheme(
 
+
       displayMedium: TextStyle(
         fontFamily: "Montserrat",
         fontSize: 16,
@@ -35,6 +36,12 @@ final whiteTheme = ThemeData(
 
       bodyMedium: TextStyle(
           fontFamily: "Montserrat", fontSize: 17),
+
+      bodyLarge: TextStyle(
+        fontFamily: "Montserrat",
+        fontSize: 21,
+        color: Color.fromRGBO(79, 79, 79, 0.78),
+      ),
 
       labelSmall: TextStyle(
         color: Color.fromRGBO(110, 110, 110, 0.478),

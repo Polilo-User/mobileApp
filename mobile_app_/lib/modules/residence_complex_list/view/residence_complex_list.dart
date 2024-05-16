@@ -77,12 +77,18 @@ class _ResidenceComplexListState extends State<ResidenceComplexList> {
                           const Center(child: Text("Не удалось загрузить данные")),
                           SizedBox(height: MediaQuery.of(context).size.height * 0.02),
                           ElevatedButton(
-                            onPressed: () { _repositoryListBloc.add(LoadRepositoryList()); },
-                            child: const Text("Повторить попытку", style: TextStyle(color: Colors.white)),
+                            onPressed: () {
+                              _repositoryListBloc.add(LoadRepositoryList());
+                            },
                             style: ButtonStyle(
-                                backgroundColor: MaterialStateProperty.all(
-                                    const Color.fromRGBO(35, 79, 104, 1)
-                                )),
+                              backgroundColor: MaterialStateProperty.all(
+                                  const Color.fromRGBO(35, 79, 104, 1)
+                              )
+                            ),
+                            child: const Text(
+                                "Повторить попытку",
+                                style: TextStyle(color: Colors.white)
+                            ),
                           )
                         ],
                       )
@@ -97,7 +103,6 @@ class _ResidenceComplexListState extends State<ResidenceComplexList> {
                       child: const Text("Не найдено подходящих проектов под параметры фильтра")
                     );
                   }
-
                   return const Center(child: CircularProgressIndicator());
               }
             )
@@ -107,4 +112,3 @@ class _ResidenceComplexListState extends State<ResidenceComplexList> {
     );
   }
 }
-
