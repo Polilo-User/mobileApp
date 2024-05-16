@@ -29,8 +29,12 @@ class UserRepository {
   }
 
   // запишет токен в локальное хранилище/бд
-  Future<String> userAuth({required String login, required String password}) async {
+  Future<dynamic> userAuth({required String login, required String password}) async {
 
+    // ошибка аутентификации
+    return false;
+
+    // без ошибки аутентификации
     return '';
   }
 

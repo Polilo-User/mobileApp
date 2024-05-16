@@ -4,6 +4,7 @@
 
 
 import 'package:mobile_app_/repositories/chat_repository/chat_repository.dart';
+import 'package:mobile_app_/repositories/user_repository/user_repository.dart';
 
 import 'app.dart';
 
@@ -45,6 +46,7 @@ void main() {
     GetIt.I.registerLazySingleton<ChatRepository>(() => (ChatRepository()));
 
     // репозиторий пользователя
+    GetIt.I.registerSingleton<UserRepository>((UserRepository(dio:Dio())));
 
 
   runApp(const MobileApp());
