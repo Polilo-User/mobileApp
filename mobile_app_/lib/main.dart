@@ -1,10 +1,7 @@
 
-
-
-
-
 import 'package:mobile_app_/repositories/chat_repository/chat_repository.dart';
 import 'package:mobile_app_/repositories/user_repository/user_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
 
@@ -16,6 +13,7 @@ import 'package:mobile_app_/repositories/filters/filter.dart';
 import 'package:mobile_app_/repositories/rooms/room_repository.dart';
 import 'package:mobile_app_/repositories/residence_complex/residence_complex_repository.dart';
 import 'package:mobile_app_/repositories/news/news_repository.dart';
+
 
 
 void main() {
@@ -46,9 +44,10 @@ void main() {
     GetIt.I.registerLazySingleton<ChatRepository>(() => (ChatRepository()));
 
     // репозиторий пользователя
-    GetIt.I.registerSingleton<UserRepository>((UserRepository(dio:Dio())));
+    GetIt.I.registerSingletonAsync<UserRepository>(() async {
+        final prefs = await SharedPreferences.getInstance();
+        return UserRepository(dio:Dio(), prefs: prefs);
+    });
 
-
-  runApp(const MobileApp());
+    runApp(const MobileApp());
 }
-

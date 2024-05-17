@@ -52,7 +52,7 @@ class _MoreState extends State<More> {
                       SizedBox(width: MediaQuery.of(context).size.width * 0.05),
                       Text('Вход в профиль', style: thm.textTheme.bodyMedium,),
                       SizedBox(width: MediaQuery.of(context).size.width * 0.14),
-                      Icon(Icons.navigate_next, size: 30,),
+                      const Icon(Icons.navigate_next, size: 30,),
                     ],
                 )
               )
@@ -94,7 +94,7 @@ class _MoreState extends State<More> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text("Избранное", style: thm.textTheme.labelLarge,),
-                        Text("Сохраненная недвижимость")
+                        const Text("Сохраненная недвижимость")
                       ],
                     )
                 ]

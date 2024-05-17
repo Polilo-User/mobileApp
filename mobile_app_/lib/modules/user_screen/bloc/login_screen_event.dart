@@ -21,3 +21,6 @@ class LoginToAccount extends LoginScreenEvent {
   final String login;
   final String password;
 }
+
+// выйти из аккаунта
+class Logout extends LoginScreenEvent {}
