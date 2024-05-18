@@ -7,9 +7,10 @@ import '../bloc/login_screen_bloc.dart';
 
 class LoginForm extends StatefulWidget {
 
-  LoginForm({super.key, required this.loginScreenBloc});
+  LoginForm({super.key, required this.loginScreenBloc, this.hasError = false});
 
   final LoginScreenBloc loginScreenBloc;
+  final bool hasError;
 
   @override
   State<LoginForm> createState() => _LoginFormState();
@@ -137,6 +138,14 @@ class _LoginFormState extends State<LoginForm> {
                   maxLines: 1,
                 )
             ),
+
+            widget.hasError
+                ? const Text("Ошибка в логине/пароле",
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 15
+                ))
+                : const Text(""),
 
             // подсказка к паролю
             Container(

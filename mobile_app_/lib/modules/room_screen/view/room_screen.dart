@@ -11,7 +11,6 @@ import 'package:mobile_app_/repositories/rooms/room.dart' as model;
 import 'package:mobile_app_/repositories/user_repository/user_repository.dart';
 
 import '../../../repositories/rooms/favorites_repository.dart';
-import '../../../repositories/rooms/models/room.dart';
 import '../../../repositories/rooms/room_repository.dart';
 
 

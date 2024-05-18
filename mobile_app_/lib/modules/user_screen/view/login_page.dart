@@ -59,6 +59,9 @@ class _LoginPageState extends State<LoginPage> {
 
                   // пользователь не зарегестрирован
                   if (state is LoginState) {
+                    if (state.hasError) {
+                      return LoginForm(loginScreenBloc: _loginScreenBloc, hasError: true);
+                    }
                     return LoginForm(loginScreenBloc: _loginScreenBloc);
                   }
 
@@ -70,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
 
                 }
               )
-              
+
             ],
           ),
         )

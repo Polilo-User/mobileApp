@@ -10,7 +10,6 @@ import 'package:get_it/get_it.dart';
 
 import '../../../repositories/user_repository/user_repository.dart';
 import 'package:mobile_app_/repositories/rooms/favorites_repository.dart';
-import 'package:mobile_app_/repositories/residence_complex/redince_complex.dart' as models;
 import 'package:mobile_app_/modules/rooms_list/widgets/widgets.dart';
 
 import '../bloc/favorites_bloc.dart';

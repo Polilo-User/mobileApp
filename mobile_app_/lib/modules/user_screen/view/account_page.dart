@@ -50,6 +50,24 @@ class _AccountPageState extends State<AccountPage> {
             ),
           ),
 
+          // номер телефона
+          Container(
+            margin: EdgeInsets.only(
+              top: MediaQuery.of(context).size.height * 0.05,
+              left: MediaQuery.of(context).size.width * 0.1,
+              right: MediaQuery.of(context).size.width * 0.2,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+
+                Text("Номер телефона: ", style: thm.textTheme.displayMedium),
+                Expanded(child: SizedBox()),
+                Text("+79221110", style: thm.textTheme.displayMedium),
+              ],
+            ),
+          ),
+
           // кнопка 'войти'
           Container(
             margin: EdgeInsets.only(

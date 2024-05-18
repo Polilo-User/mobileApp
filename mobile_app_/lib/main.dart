@@ -4,7 +4,6 @@ import 'package:mobile_app_/repositories/user_repository/user_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app.dart';
-import 'dart:io' as io;
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';

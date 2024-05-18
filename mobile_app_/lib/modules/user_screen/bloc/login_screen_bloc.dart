@@ -32,14 +32,20 @@ class LoginScreenBloc extends Bloc<LoginScreenEvent, LoginScreenState> {
     // войти в аккаунт
     on<LoginToAccount>( (event, emit) async {
 
-      User? user = await userRepository.userAuth(login: event.login, password: event.password);
+      try {
+        User? user = await userRepository.userAuth(login: event.login, password: event.password);
 
-      // проверка на ошибку логина/пароля
-      if (user == null) {
+        // проверка на ошибку логина/пароля
+        if (user == null) {
+          emit(LoginState(hasError: true));
+        } else {
+          emit(AccountState(user: user));
+        }
+
+      } catch(e) {
         emit(LoginState(hasError: true));
-      } else {
-        emit(AccountState(user: user));
       }
+
     });
 
     // выйти из аккаунта

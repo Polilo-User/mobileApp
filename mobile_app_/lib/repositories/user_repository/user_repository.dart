@@ -60,9 +60,9 @@ class UserRepository {
         if (apiError == 418) {
           return null;
         }
-
-        return null;
       }
+      return null;
+
     }
 
     final data = response.data as Map<String, dynamic>;
