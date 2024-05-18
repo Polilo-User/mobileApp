@@ -8,7 +8,10 @@ import 'package:get_it/get_it.dart';
 import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/widgets/hard_back_arrow.dart';
 import 'package:mobile_app_/modules/residence_complex_screen/widgets/sales_office_child.dart';
 import 'package:mobile_app_/repositories/rooms/room.dart' as model;
+import 'package:mobile_app_/repositories/user_repository/user_repository.dart';
 
+import '../../../repositories/rooms/favorites_repository.dart';
+import '../../../repositories/rooms/models/room.dart';
 import '../../../repositories/rooms/room_repository.dart';
 
 
@@ -22,10 +25,22 @@ class RoomScreen extends StatefulWidget {
 class _RoomScreenState extends State<RoomScreen> {
 
 
-  late final model.Room? room;
+  model.Room? room;
+
   final RoomRepository roomRepository = GetIt.I<RoomRepository>();
+  final FavoritesRepository favoritesRepository = GetIt.I<FavoritesRepository>();
+  final UserRepository userRepository = GetIt.I<UserRepository>();
+
   late String? quarter = "";
   // quarter = roomRepository.getRoomQuarter(room!.Id);
+
+  Future<bool> getIsFavorite() async {
+    if (userRepository.getUser() == null) {
+      return false;
+    }
+    final result = await favoritesRepository.isFavorite(room!.Id);
+    return result;
+  }
 
   Future<String> getQuarter() async {
     final result = await roomRepository.getRoomQuarter(room!.Id);
@@ -75,11 +90,27 @@ class _RoomScreenState extends State<RoomScreen> {
                       end: BorderSide(color: Color.fromRGBO(118, 197, 19, 1)),
                     ),
                   ),
-                  child: IconButton(
-                    icon: SvgPicture.asset("assets/svg/favorite.svg", width: 40, height: 40),
-                    onPressed: () {
-                      // TODO: implement favorite
-                    },
+                  child:
+                  FutureBuilder(
+                      future: getIsFavorite(),
+                      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                        if (snapshot.hasData) {
+                          var isFavorite = snapshot.data;
+                          return  IconButton(
+                            icon: SvgPicture.asset("assets/svg/favorite.svg", width: 40, height: 40, color: isFavorite! ? const Color.fromRGBO(118, 197, 19, 1) : Colors.grey),
+                            onPressed: () async {
+                              if (userRepository.getUser() == null) {
+                                return;
+                              }
+                              await favoritesRepository.addToFavorites(room: room!);
+                              await favoritesRepository.getFavorites();
+                              setState(() {});
+                            },
+                          );
+                        } else {
+                          return const CircularProgressIndicator();
+                        }
+                      }
                   )
                 )
               ],

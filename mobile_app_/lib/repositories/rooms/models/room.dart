@@ -29,4 +29,17 @@ class Room {
     required this.CountOfRooms,
     required this.BuildingId
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': Id,
+      'name': Name,
+      'price': Price,
+      'area': Area,
+      'floor': Floor,
+      'countofrooms': CountOfRooms,
+      'building_id': BuildingId,
+    };
+  }
+
 }

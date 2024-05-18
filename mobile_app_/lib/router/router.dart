@@ -11,6 +11,7 @@ import 'package:mobile_app_/modules/residence_complex_and_rooms_filter/view/lead
 import 'package:mobile_app_/modules/room_list_from_residence_complex/view/room_list_from_residence_complex_filter_page.dart';
 import 'package:mobile_app_/modules/room_list_from_residence_complex/view/room_list_from_residence_complex.dart';
 import 'package:mobile_app_/modules/user_screen/view/login_page.dart';
+import 'package:mobile_app_/modules/favorites/view/favorites_screen.dart';
 
 final routes = {
   '/': (context) => const MainPageScreen(),
@@ -22,6 +23,7 @@ final routes = {
   '/room-list-from-residence-complex-filter': (context) => const RoomListFromResidenceComplexFilterPage(),
   '/room-list-from-residence-complex': (context) => const RoomListFromResidenceComplex(),
   '/user-screen': (context) => const LoginPage(),
+  '/favorites-screen': (context) => const FavoritesScreen(),
 };
 
 

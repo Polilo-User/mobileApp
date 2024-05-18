@@ -37,7 +37,6 @@ class _MoreState extends State<More> {
               child:
               InkWell(
                   onTap: () {
-                    // TODO добавить переход на страницу входа в аккаунт
                     Navigator.of(context).pushNamed("/user-screen");
                   },
                   child:
@@ -63,7 +62,7 @@ class _MoreState extends State<More> {
             ),
             child: InkWell(
               onTap: () {
-                // TODO добавить переход в избранное
+                Navigator.of(context).pushNamed("/favorites-screen");
               },
               child:
                 Row(
