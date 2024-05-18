@@ -35,6 +35,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
     super.initState();
   }
 
+
   @override
   Widget build(BuildContext context) {
     final thm = Theme.of(context);
@@ -91,29 +92,43 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                     return Container(
                       margin: EdgeInsets.only(
                         top: MediaQuery.of(context).size.height * 0.05,
+                        left: MediaQuery.of(context).size.width * 0.1,
+                        right: MediaQuery.of(context).size.width * 0.1,
                       ),
-                      child: const Text("В избранном пусто, но у нас полно недвижимости на люлй вкус 🏙️")
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text("В избранном пусто, но у нас полно недвижимости на любой вкус 🏙️"),
+                          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+                          const Text("Еще у нас есть чат с консультантами"),
+                          SizedBox(height: MediaQuery.of(context).size.height * 0.01),
+                          Text("(в MVP случайные сообщения)", style: thm.textTheme.bodySmall),
+                        ],
+                      )
                     );
                   }
 
                   // тут если вошли и загрузили
                   if (state is FavoritesLoaded) {
                     return
-                      Expanded(
-                        child:  ListView.builder(
-                        itemCount: state.rooms.length,
-                        itemBuilder: (context, i) {
-                          return ListTile(
-                            title: InkWell(
-                                child: Room(room: state.rooms[i]),
-                                onTap: () {
-                                  Navigator.of(context).pushNamed("/room-screen", arguments: { 'room' : state.rooms[i] } );
+                        Expanded(
+                            child:
+                            ListView.builder(
+                                itemCount: state.rooms.length,
+                                itemBuilder: (context, i) {
+                                  return ListTile(
+                                    title: InkWell(
+                                        child: Room(room: state.rooms[i]),
+                                        onTap: () {
+                                          setState(() {});
+                                          Navigator.pop(context);
+                                          Navigator.of(context).pushNamed("/room-screen", arguments: { 'room' : state.rooms[i], "fromFavorites": true } );
+                                        }
+                                    ),
+                                  );
                                 }
-                            ),
-                          );
-                        }
-                    )
-                    );
+                            )
+                        );
                   }
 
                   return Text("_favoritesBloc error");

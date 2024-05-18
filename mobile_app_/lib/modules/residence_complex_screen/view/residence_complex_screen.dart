@@ -149,7 +149,7 @@ class _ResidenceComplexScreenState extends State<ResidenceComplexScreen> {
                           end: BorderSide(color: Color.fromRGBO(118, 197, 19, 1)),
                         ),
                       ),
-                      margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.5),
+                      margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.45),
                       padding: const EdgeInsets.only(left: 13, right: 13, top: 8, bottom: 8),
                       child: Text("100", style: thme.textTheme.bodyLarge,),
                     ),

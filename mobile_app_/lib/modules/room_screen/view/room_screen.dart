@@ -24,8 +24,8 @@ class RoomScreen extends StatefulWidget {
 
 class _RoomScreenState extends State<RoomScreen> {
 
-
   model.Room? room;
+  bool fromFavorites = false;
 
   final RoomRepository roomRepository = GetIt.I<RoomRepository>();
   final FavoritesRepository favoritesRepository = GetIt.I<FavoritesRepository>();
@@ -52,6 +52,7 @@ class _RoomScreenState extends State<RoomScreen> {
     super.initState();
   }
 
+
   @override
   Widget build(BuildContext context) {
 
@@ -59,6 +60,9 @@ class _RoomScreenState extends State<RoomScreen> {
 
     if (args is Map) {
       room = args['room'] as model.Room;
+      if (args['fromFavorites'] == true) {
+        fromFavorites = true;
+      }
     } else {
       throw Exception('Нужно передать квартиру');
     }
@@ -71,7 +75,10 @@ class _RoomScreenState extends State<RoomScreen> {
 
             Row (
               children: [
-                HardBackArrow(),
+                (fromFavorites)
+                    ? HardBackArrow(url: '/favorites-screen')
+                    :  HardBackArrow(),
+
                 const Expanded(child: SizedBox()),
                 Container(
                   height: 40,
@@ -103,7 +110,6 @@ class _RoomScreenState extends State<RoomScreen> {
                                 return;
                               }
                               await favoritesRepository.addToFavorites(room: room!);
-                              await favoritesRepository.getFavorites();
                               setState(() {});
                             },
                           );
